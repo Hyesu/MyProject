@@ -10,6 +10,10 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 
+#include "Components/WidgetComponent.h"
+#include "InventoryComponent.h"
+#include "InvenWidget.h"
+
 //////////////////////////////////////////////////////////////////////////
 // AShootingGameCharacter
 
@@ -46,6 +50,8 @@ AShootingGameCharacter::AShootingGameCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+	InitInventory();	
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -138,4 +144,23 @@ void AShootingGameCharacter::MoveRight(float Value)
 void AShootingGameCharacter::ToggleInventory()
 {
 	SG_LOG("Toggle");
+	// todo: show/hide toggle
+	/*auto InvenWidget = Cast<UInvenWidget>(InvenUI->GetUserWidgetObject());
+	if (InvenWidget != nullptr)
+		InvenWidget->AddToViewport();*/
+}
+
+void AShootingGameCharacter::InitInventory()
+{
+	Inventory = CreateDefaultSubobject<UInventoryComponent>(TEXT("CharacterInventory"));
+	InvenUI = CreateDefaultSubobject<UWidgetComponent>(TEXT("InvenUIWidget"));
+	InvenUI->SetWidgetSpace(EWidgetSpace::Screen);
+	InvenUI->SetupAttachment(RootComponent);
+	static ConstructorHelpers::FClassFinder<UUserWidget> UI_INVEN(TEXT("/Game/UI/UI_Inventory.UI_Inventory"));
+	if (UI_INVEN.Succeeded())
+		InvenUI->SetWidgetClass(UI_INVEN.Class);
+
+	auto InvenWidget = Cast<UInvenWidget>(InvenUI->GetUserWidgetObject());
+	if (InvenWidget != nullptr)
+		InvenWidget->BindData(Inventory);
 }

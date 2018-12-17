@@ -69,6 +69,16 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
+public:
 	void ToggleInventory();
-};
 
+	// inventory
+	UPROPERTY(VisibleAnywhere, Category = Inventory)
+	class UInventoryComponent* Inventory;
+
+	UPROPERTY(VisibleAnywhere, Category = UI)
+	class UWidgetComponent* InvenUI;
+
+private:
+	void InitInventory();
+};
