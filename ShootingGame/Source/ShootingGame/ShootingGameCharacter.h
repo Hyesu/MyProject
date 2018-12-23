@@ -70,6 +70,8 @@ public:
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
 public:
+	virtual void PostInitializeComponents() override;
+
 	void ToggleInventory();
 
 	// inventory

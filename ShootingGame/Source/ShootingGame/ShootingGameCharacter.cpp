@@ -143,24 +143,39 @@ void AShootingGameCharacter::MoveRight(float Value)
 
 void AShootingGameCharacter::ToggleInventory()
 {
-	SG_LOG("Toggle");
-	// todo: show/hide toggle
-	/*auto InvenWidget = Cast<UInvenWidget>(InvenUI->GetUserWidgetObject());
+	auto InvenWidget = Cast<UInvenWidget>(InvenUI->GetUserWidgetObject());
 	if (InvenWidget != nullptr)
-		InvenWidget->AddToViewport();*/
+	{
+		if (InvenWidget->IsInViewport())
+		{
+			InvenWidget->RemoveFromParent();
+		}
+		else
+		{
+			InvenWidget->AddToViewport();
+		}
+	}
 }
 
 void AShootingGameCharacter::InitInventory()
 {
 	Inventory = CreateDefaultSubobject<UInventoryComponent>(TEXT("CharacterInventory"));
-	InvenUI = CreateDefaultSubobject<UWidgetComponent>(TEXT("InvenUIWidget"));
-	InvenUI->SetWidgetSpace(EWidgetSpace::Screen);
+	InvenUI = CreateDefaultSubobject<UWidgetComponent>(TEXT("InvenUIWidget"));		
 	InvenUI->SetupAttachment(RootComponent);
-	static ConstructorHelpers::FClassFinder<UUserWidget> UI_INVEN(TEXT("/Game/UI/UI_Inventory.UI_Inventory"));
+	static ConstructorHelpers::FClassFinder<UUserWidget> UI_INVEN(TEXT("/Game/UI/UI_Inventory.UI_Inventory_C"));
 	if (UI_INVEN.Succeeded())
+	{
 		InvenUI->SetWidgetClass(UI_INVEN.Class);
+	}
 
 	auto InvenWidget = Cast<UInvenWidget>(InvenUI->GetUserWidgetObject());
 	if (InvenWidget != nullptr)
+	{
 		InvenWidget->BindData(Inventory);
+	}
+}
+
+void AShootingGameCharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
 }
