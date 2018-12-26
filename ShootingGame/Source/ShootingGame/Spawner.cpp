@@ -2,12 +2,16 @@
 
 #include "Spawner.h"
 #include "ShootingGame.h"
+#include "FieldObject.h"
 
 // Sets default values
 ASpawner::ASpawner()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
+
+	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RANGE"));
+	RootComponent = MeshComponent;
 }
 
 // Called when the game starts or when spawned
@@ -28,9 +32,17 @@ void ASpawner::Init()
 {
 	// todo: data driven
 
-	
-	GetWorld()->GetTimerManager().SetTimer(SpawnTimerHandle, FTimerDelegate::CreateLambda([this]() {
-		SG_LOG("Spawn!");
+	FVector Location{ GetActorLocation() };
+	float Range{ SpawnRange };
+	GetWorld()->GetTimerManager().SetTimer(SpawnTimerHandle, FTimerDelegate::CreateLambda([this, Location, Range]() {
+
+		FVector TargetLocation{ Location };
+		TargetLocation.X += FMath::RandRange(-Range, Range);
+		TargetLocation.Y += FMath::RandRange(-Range, Range);
+		TargetLocation.Z += FMath::RandRange(-Range, Range);
+
+		auto NewFdObject = GetWorld()->SpawnActor<AFieldObject>(TargetLocation, FRotator::ZeroRotator);
+
 	}), SpawnIntervalInSec, true);
 }
 

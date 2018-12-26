@@ -30,9 +30,15 @@ private:
 
 	FTimerHandle SpawnTimerHandle = {};
 
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* MeshComponent;
+
 	UPROPERTY(EditAnywhere, Category = Spawn, Meta = (AllowPrivateAccess = true))
 	FName SpawnDataKey;
 
 	UPROPERTY(EditAnywhere, Category = Spawn, Meta = (AllowPrivateAccess = true))
 	float SpawnIntervalInSec{ 1.f };
+
+	UPROPERTY(EditAnywhere, Category = Spawn, Meta = (AllowPrivateAccess = true))
+	float SpawnRange{ 50.f };
 };
