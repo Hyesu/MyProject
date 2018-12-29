@@ -25,6 +25,10 @@ public:
 
 	virtual void PostInitializeComponents() override;
 
+	void PreSpawn();
+	void Spawn();
+	void PostSpawn();
+
 private:
 	void Init();
 

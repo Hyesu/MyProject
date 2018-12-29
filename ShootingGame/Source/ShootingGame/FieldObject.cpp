@@ -1,18 +1,21 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "FieldObject.h"
+#include "ShootingGame.h"
 
 // Sets default values
 AFieldObject::AFieldObject()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
-
-	CollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("COLLISION"));
 	ModelComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MODEL"));
+	RootComponent = ModelComponent;
 
-	RootComponent = CollisionComponent;
-	ModelComponent->SetupAttachment(RootComponent);
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> MODEL_MESH(TEXT("/Game/Geometry/Meshes/1M_Cube"));
+	if (MODEL_MESH.Succeeded())
+	{
+		ModelComponent->SetStaticMesh(MODEL_MESH.Object);
+	}
 }
 
 // Called when the game starts or when spawned
@@ -38,12 +41,5 @@ void AFieldObject::PostInitializeComponents()
 
 void AFieldObject::InitModel()
 {
-	// todo: data driven
-	CollisionComponent->SetBoxExtent(FVector(40.f, 42.f, 30.f));
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> MODEL_MESH(TEXT("/Game/InfinityBladeGrassLands/Environments/Breakables/StaticMesh/Box/SM_Env_Breakables_Box1.SM_Env_Breakables_Box1_C"));
-	if (MODEL_MESH.Succeeded())
-	{
-		ModelComponent->SetStaticMesh(MODEL_MESH.Object);
-	}
-	ModelComponent->SetRelativeLocation(FVector(0.f, -3.5f, 7120.f));
+	// todo: data driven	
 }

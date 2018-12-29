@@ -30,18 +30,10 @@ void ASpawner::Tick(float DeltaTime)
 
 void ASpawner::Init()
 {
-	// todo: data driven
-
-	FVector Location{ GetActorLocation() };
-	float Range{ SpawnRange };
-	GetWorld()->GetTimerManager().SetTimer(SpawnTimerHandle, FTimerDelegate::CreateLambda([this, Location, Range]() {
-
-		FVector TargetLocation{ Location };
-		TargetLocation.X += FMath::RandRange(-Range, Range);
-		TargetLocation.Y += FMath::RandRange(-Range, Range);
-		TargetLocation.Z += FMath::RandRange(-Range, Range);
-
-		auto NewFdObject = GetWorld()->SpawnActor<AFieldObject>(TargetLocation, FRotator::ZeroRotator);
+	GetWorld()->GetTimerManager().SetTimer(SpawnTimerHandle, FTimerDelegate::CreateLambda([this]() {
+		this->PreSpawn();
+		this->Spawn();
+		this->PostSpawn();
 
 	}), SpawnIntervalInSec, true);
 }
@@ -50,4 +42,27 @@ void ASpawner::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 	Init();
+}
+
+void ASpawner::PreSpawn()
+{
+
+}
+
+void ASpawner::PostSpawn()
+{
+
+}
+
+void ASpawner::Spawn()
+{
+	FVector TargetLocation{ GetActorLocation() };
+	TargetLocation.X += FMath::RandRange(-SpawnRange, SpawnRange);
+	TargetLocation.Y += FMath::RandRange(-SpawnRange, SpawnRange);
+
+	auto NewFdObject = GetWorld()->SpawnActor<AFieldObject>(TargetLocation, FRotator::ZeroRotator);
+	if (NewFdObject != nullptr)
+	{
+		// todo: data driven
+	}
 }

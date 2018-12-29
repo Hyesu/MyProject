@@ -29,6 +29,5 @@ public:
 
 	virtual void PostInitializeComponents() override;
 
-	UBoxComponent* CollisionComponent;
 	UStaticMeshComponent* ModelComponent;
 };
