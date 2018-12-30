@@ -1,0 +1,30 @@
+{
+	"item_list": [{
+			"id": 1,
+			"str_id": "weapon_ar_1",
+			"ammo": "5.56",
+			"attach_lower": false,
+			"attach_mag": true,
+			"attach_muzzle": true,
+			"attach_stock": false,
+			"attach_upper": true,
+			"burst": 3,
+			"damage": 43,
+			"id": "1",
+			"mag": 30,
+			"mag_ext": 10,
+			"moa": 4,
+			"power": 8000,
+			"reload_clip": 2.2,
+			"reload_quick": 1.9,
+			"rpm_burst": 800,
+			"rpm_semi": 800,
+			"semi": 1,
+			"spread": 5,
+			"str_id": "WEAPON_001",
+			"sub_type": "AR",
+			"zero_max": 500,
+			"zero_min": 100
+		}
+	]
+}

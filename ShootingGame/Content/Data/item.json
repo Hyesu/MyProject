@@ -1,0 +1,20 @@
+{
+	"item_list": [{
+			"id": 1,
+			"str_id": "weapon_ar_1",
+			"name": "M16A4",
+			"type": "weapon",
+			"subtype": "ar",
+			"scale_ratio": [1,1,1],
+			"spawn_weight": 8
+		},
+		"id": 2,
+			"str_id": "weapon_ar_2",
+			"name": "M16A4",
+			"type": "weapon",
+			"subtype": "ar",
+			"scale_ratio": [1,1,1],
+			"spawn_weight": 11
+		}
+	]
+}
