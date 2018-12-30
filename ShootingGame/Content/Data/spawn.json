@@ -1,8 +1,8 @@
 {
 	"SpawnerList": [{
 			"ExcludeItem": ["weapon_ar_1"],
-			"StrId": "Spawner1",
-			"TypeList": ["weapon", "sub_weapon", "melee_weapon", "thrown_weapon", "equipment", "consumable", "ammo", "attachments"],
+			"StrID": "Spawner_1",
+			"TypeList": ["Weapon", "SubWeapon", "MeleeWeapon", "ThrownWeapon", "Equipment", "Consumable", "Ammo", "Attachment"],
 			"WeightOverride": [{
 					"weapon_ar_2": 3
 				}, {
@@ -10,32 +10,28 @@
 				}
 			]
 		}, {
-			"excludeitem": ["weapon_ar_1"],
-			"str_id": "spawner_2",
-			"type_list": ["weapon", "sub_weapon", "melee_weapon", "thrown_weapon", "equipment", "consumable", "ammo", "attachments"],
-			"weight_override": [{
+			"ExcludeItem": ["weapon_ar_1"],
+			"StrID": "Spawner_2",
+			"TypeList": ["Weapon", "SubWeapon", "MeleeWeapon", "ThrownWeapon", "Equipment", "Consumable", "Ammo", "Attachment"],
+			"WeightOverride": [{
 					"weapon_ar_2": 3
 				}, {
 					"weapon_ar_4": 3
 				}
 			]
 		}, {
-			"str_id": "spawner_3",
-			"type_list": {
-				"excludeitem": ["weapon_ar_1"],
-				"str_id": "spawner_4",
-				"type_list": ["weapon", "sub_weapon", "melee_weapon", "thrown_weapon", "equipment", "consumable", "ammo", "attachments"],
-				"weight_override": [{
-						"weapon_ar_2": 3
-					}, {
-						"weapon_ar_4": 3
-					}
-				]
-			}
+			"ExcludeItem": ["weapon_ar_1"],
+			"StrID": "Spawner_3",
+			"TypeList": ["Weapon", "SubWeapon", "MeleeWeapon", "ThrownWeapon", "Equipment", "Consumable", "Ammo", "Attachment"],
+			"WeightOverride": [{
+					"weapon_ar_2": 3
+				}, {
+					"weapon_ar_4": 3
+				}
+			]
 		}
 	],
 	"WeightByType": [{
-			"Weapon": 6,
 			"SubType": {
 				"AR": 24,
 				"DMR": 14,
@@ -44,46 +40,47 @@
 				"SG": 24,
 				"SMG": 24,
 				"SR": 5
-			}
+			},
+			"Weapon": 6
 		}, {
-			"SubWeapon": 2,
 			"SubType": {
-				"SemiAuto": 1,
 				"Auto": 1,
 				"Revolver": 1,
 				"SG": 1,
-			}
+				"SemiAuto": 1
+			},
+			"SubWeapon": 2
 		}, {
-			"ThrownWeapon": 2,
 			"SubType": {
-				"Grenade": 1,
 				"Flashbang": 1,
-				"Smoke": 1,
-				"Molotov": 1
-			}
+				"Grenade": 1,
+				"Molotov": 1,
+				"Smoke": 1
+			},
+			"ThrownWeapon": 2
 		}, {
 			"MeleeWeapon": 1,
 			"SubType": {
-				"Sickle": 1,
-				"Machete": 1,
 				"Crowbar": 1,
-				"FryPan": 1
+				"FryPan": 1,
+				"Machete": 1,
+				"Sickle": 1
 			}
 		}, {
 			"Equipment": 4,
 			"SubType": {
-				"Helmet": 1,
 				"Armor": 1,
-				"Backpack": 1
+				"Backpack": 1,
+				"Helmet": 1
 			}
 		}, {
 			"Attachment": 2,
 			"SubType": {
-				"Muzzle": 1,
 				"LowerRail": 1,
-				"UpperRail": 1,
 				"Magazine": 1,
-				"Stock": 1
+				"Muzzle": 1,
+				"Stock": 1,
+				"UpperRail": 1
 			}
 		}
 	]
