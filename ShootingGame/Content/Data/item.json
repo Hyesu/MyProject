@@ -8,6 +8,7 @@
 			"scale_ratio": [1,1,1],
 			"spawn_weight": 8
 		},
+		{
 		"id": 2,
 			"str_id": "weapon_ar_2",
 			"name": "M16A4",
