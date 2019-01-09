@@ -32,56 +32,116 @@
 		}
 	],
 	"WeightByType": [{
-			"SubType": {
-				"AR": 24,
-				"DMR": 14,
-				"ETC": 6,
-				"LMG": 3,
-				"SG": 24,
-				"SMG": 24,
-				"SR": 5
-			},
-			"Weapon": 6
+			"Type": "Weapon",
+			"Weight": 6,
+			"SubType": [{
+					"Type": "AR",
+					"Weight": 24
+				}, {
+					"Type": "DMR",
+					"Weight": 14
+				}, {
+					"Type": "ETC",
+					"Weight": 6
+				}, {
+					"Type": "LMG",
+					"Weight": 3
+				}, {
+					"Type": "SG",
+					"Weight": 24
+				}, {
+					"Type": "SMG",
+					"Weight": 24
+				}, {
+					"Type": "SR",
+					"Weight": 5
+				}
+			]
 		}, {
-			"SubType": {
-				"Auto": 1,
-				"Revolver": 1,
-				"SG": 1,
-				"SemiAuto": 1
-			},
-			"SubWeapon": 2
+			"Type": "SubWeapon",
+			"Weight": 2,
+			"SubType": [{
+					"Type": "Auto",
+					"Weight": 1
+				}, {
+					"Type": "Revolver",
+					"Weight": 1
+				}, {
+					"Type": "SG",
+					"Weight": 1
+				}, {
+					"Type": "SemiAuto",
+					"Weight": 1
+				}
+			]
 		}, {
-			"SubType": {
-				"Flashbang": 1,
-				"Grenade": 1,
-				"Molotov": 1,
-				"Smoke": 1
-			},
-			"ThrownWeapon": 2
+			"Type": "ThrownWeapon",
+			"Weight": 2,
+			"SubType": [{
+					"Type": "Flashbang",
+					"Weight": 1
+				}, {
+					"Type": "Grenade",
+					"Weight": 1
+				}, {
+					"Type": "Molotov",
+					"Weight": 1
+				}, {
+					"Type": "Smoke",
+					"Weight": 1
+				}
+			]
 		}, {
-			"MeleeWeapon": 1,
-			"SubType": {
-				"Crowbar": 1,
-				"FryPan": 1,
-				"Machete": 1,
-				"Sickle": 1
-			}
+			"Type": "MeleeWeapon",
+			"Weight": 1,
+			"SubType": [{
+					"Type": "Crowbar",
+					"Weight": 1
+				}, {
+					"Type": "FryPan",
+					"Weight": 1
+				}, {
+					"Type": "Machete",
+					"Weight": 1
+				}, {
+					"Type": "Sickle",
+					"Weight": 1
+				}
+			]
 		}, {
-			"Equipment": 4,
-			"SubType": {
-				"Armor": 1,
-				"Backpack": 1,
-				"Helmet": 1
-			}
+			"Type": "Equipment",
+			"Weight": 4,
+			"SubType": [{
+					"Type": "Armor",
+					"Weight": 1
+				}, {
+					"Type": "Backpack",
+					"Weight": 1
+				}, {
+					"Type": "Helmet",
+					"Weight": 1
+				}
+			]
 		}, {
-			"Attachment": 2,
-			"SubType": {
-				"LowerRail": 1,
-				"Magazine": 1,
-				"Muzzle": 1,
-				"Stock": 1,
-				"UpperRail": 1
-			}
+			"Type": "Attachment",
+			"Weight": 2,
+			"SubType": [{
+					"Type": "LowerRail",
+					"Weight": 1
+				}, {
+					"Type": "Magazine",
+					"Weight": 1
+				}, {
+					"Type": "Muzzle",
+					"Weight": 1
+				}, {
+					"Type": "Stock",
+					"Weight": 1
+				}, {
+					"Type": "UpperRail",
+					"Weight": 1
+				}
+			]
 		}
 	]
 }
