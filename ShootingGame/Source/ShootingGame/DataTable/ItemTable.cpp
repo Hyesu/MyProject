@@ -3,6 +3,8 @@
 #include "ShootingGame.h"
 #include "../Utility/JsonUtil.h"
 
+IMPL_SINGLETONE(ItemTable);
+
 ItemTable* GetItemTable()
 {
 	return static_cast<ItemTable*>(ItemTable::GetInstance());
@@ -12,7 +14,7 @@ void ItemTable::Init()
 {
 	static FString DataTableFilePath{ FPaths::ProjectContentDir().Append(TEXT("Data/item.json")) };
 	auto ItemJsonUtil = std::make_unique<JsonUtil>();
-	if (ItemJsonUtil->Init(DataTableFilePath) != JsonUtil::Result::Succes)
+	if (ItemJsonUtil->Init(DataTableFilePath) != JsonUtil::Result::Success)
 	{
 		SG_LOG("Json File Init Fail: %s", *DataTableFilePath);
 		return;
@@ -31,7 +33,7 @@ void ItemTable::Init()
 
 		ItemObject->TryGetStringField("Name", Data->Name);
 		UtilPtr->GetNameField(ItemObject, "Type", Data->Type);
-		UtilPtr->GetNameField(ItemObject, "SubType", Data->Type);
+		UtilPtr->GetNameField(ItemObject, "SubType", Data->SubType);
 		UtilPtr->GetVectorField(ItemObject, "ScaleRatio", Data->Scale);
 		ItemObject->TryGetNumberField("SpawnWeight", Data->SpawnWeight);
 
@@ -42,9 +44,10 @@ void ItemTable::Init()
 
 const ItemData* ItemTable::GetData(const DataKey& Key)
 {
-	const Data* Data{ DataTable::GetData(Key) };
-	if (Data == nullptr)
-		return nullptr;
+	return static_cast<const ItemData*>(DataTable::GetData(Key));
+}
 
-	return static_cast<const ItemData*>(Data);
+const ItemData* ItemTable::GetData(const FName& StringKey)
+{
+	return static_cast<const ItemData*>(DataTable::GetData(StringKey));
 }

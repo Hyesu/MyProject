@@ -1,4 +1,5 @@
 #pragma once
+#include "Singleton.h"
 #include "DataTable.h"
 
 struct ItemData : public Data
@@ -12,8 +13,11 @@ struct ItemData : public Data
 
 class ItemTable : public DataTable
 {
+	DECL_SINGLETONE(ItemTable);
+
 public:
 	const ItemData* GetData(const DataKey& Key) override;
+	const ItemData* GetData(const FName& StringKey) override;
 	void Init();
 };
 
