@@ -6,6 +6,7 @@
 #include "JsonReader.h"
 #include "JsonSerializer.h"
 #include <functional>
+#include <vector>
 
 /**
  * 
@@ -19,7 +20,7 @@ class SHOOTINGGAME_API JsonUtil
 public:
 	enum class Result
 	{
-		Succes,
+		Success,
 		Fail_NotExistFile,
 		Fail_NotJsonFormat,
 		Fail_NotExistField,
@@ -34,6 +35,8 @@ public:
 	Result ForEachArray(const JsonObjectPtr& ParentObject, const FString& ArrayFieldName, ForEachArrayFunc&& ForEachFunc);
 	Result GetNameField(const JsonObjectPtr& JsonObject, const FString& FieldName, FName& outName);
 	Result GetVectorField(const JsonObjectPtr& JsonObject, const FString& FieldName, FVector& OutVector);
+	Result GetStringListField(const JsonObjectPtr& JsonObject, const FString& FieldName, std::vector<FString>& OutVec);
+	Result GetNameListField(const JsonObjectPtr& JsonObject, const FString& FieldName, std::vector<FName>& OutVec);
 
 	const JsonObjectPtr& GetRootObject() const { return RootObject; }
 

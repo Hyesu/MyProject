@@ -27,7 +27,7 @@ JsonUtil::Result JsonUtil::Init(const FString& FilePath)
 	}
 
 	DataPath = FilePath;
-	return Result::Succes;
+	return Result::Success;
 }
 
 JsonUtil::Result JsonUtil::ForEachArray(const JsonObjectPtr& ParentObject, const FString& ArrayFieldName, ForEachArrayFunc&& ForEachFunc)
@@ -47,7 +47,7 @@ JsonUtil::Result JsonUtil::ForEachArray(const JsonObjectPtr& ParentObject, const
 		}
 	}
 
-	return Result::Succes;
+	return Result::Success;
 }
 
 JsonUtil::Result JsonUtil::GetNameField(const JsonObjectPtr& JsonObject, const FString& FieldName, FName& outName)
@@ -59,7 +59,7 @@ JsonUtil::Result JsonUtil::GetNameField(const JsonObjectPtr& JsonObject, const F
 	}
 
 	outName = *StringValue;
-	return Result::Succes;
+	return Result::Success;
 }
 
 JsonUtil::Result JsonUtil::GetVectorField(const JsonObjectPtr& JsonObject, const FString& FieldName, FVector& OutVector)
@@ -78,8 +78,38 @@ JsonUtil::Result JsonUtil::GetVectorField(const JsonObjectPtr& JsonObject, const
 
 	const TArray<JsonValuePtr>& OutArray{ *OutArrayPtr };
 	OutVector.X = OutArray[0]->AsNumber();
-	OutVector.X = OutArray[1]->AsNumber();
-	OutVector.X = OutArray[2]->AsNumber();
+	OutVector.Y = OutArray[1]->AsNumber();
+	OutVector.Z = OutArray[2]->AsNumber();
 
-	return Result::Succes;
+	return Result::Success;
+}
+
+JsonUtil::Result JsonUtil::GetStringListField(const JsonObjectPtr& JsonObject, const FString& FieldName, std::vector<FString>& OutVec)
+{
+	TArray<FString> OutStringTArray;
+	if (JsonObject->TryGetStringArrayField(FieldName, OutStringTArray) == false)
+	{
+		return Result::Fail_NotExistField;
+	}
+	
+	for (const FString& Value : OutStringTArray)
+	{
+		OutVec.emplace_back(Value);
+	}
+	return Result::Success;
+}
+
+JsonUtil::Result JsonUtil::GetNameListField(const JsonObjectPtr& JsonObject, const FString& FieldName, std::vector<FName>& OutVec)
+{
+	TArray<FString> OutStringTArray;
+	if (JsonObject->TryGetStringArrayField(FieldName, OutStringTArray) == false)
+	{
+		return Result::Fail_NotExistField;
+	}
+
+	for (const FString& Value : OutStringTArray)
+	{
+		OutVec.emplace_back(*Value);
+	}
+	return Result::Success;
 }

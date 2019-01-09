@@ -5,6 +5,7 @@
 #include "ShootingGame.h"
 #include "UObject/ConstructorHelpers.h"
 #include "DataTable/ItemTable.h"
+#include "DataTable/SpawnTable.h"
 
 AShootingGameGameMode::AShootingGameGameMode()
 {
@@ -20,4 +21,12 @@ void AShootingGameGameMode::InitGame(const FString& MapName, const FString& Opti
 {
 	Super::InitGame(MapName, Options, ErrorMessage);
 	GetItemTable()->Init();
+	GetSpawnTable()->Init();
+}
+
+void AShootingGameGameMode::Logout(AController* Exiting)
+{
+	Super::Logout(Exiting);
+	GetItemTable()->DestroyInstance();
+	GetSpawnTable()->DestroyInstance();
 }

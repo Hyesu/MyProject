@@ -15,4 +15,5 @@ public:
 	AShootingGameGameMode();
 
 	void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
+	void Logout(AController* Exiting) override;
 };

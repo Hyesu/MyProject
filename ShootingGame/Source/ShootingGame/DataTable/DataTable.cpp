@@ -1,18 +1,34 @@
 #include "DataTable.h"
-
-IMPL_SINGLETONE(DataTable);
+#include <algorithm>
 
 const Data* DataTable::GetData(const DataKey& Key)
 {
-	auto it = DataMap.find(Key);
-	if (it != DataMap.end())
-		return it->second.get();
+	auto It = DataMap.find(Key);
+	if (It != DataMap.end())
+		return It->second.get();
 
 	return nullptr;
+}
+
+const Data* DataTable::GetData(const FName& StringKey)
+{
+	DataKey* NumberKey{ KeyIndexMap.Find(StringKey) };
+	if (NumberKey == nullptr)
+		return nullptr;
+
+	return GetData(*NumberKey);
 }
 
 void DataTable::AddData(DataKey Key, DataPtr&& Data)
 {
 	KeyIndexMap.Emplace(Data->StringKey, Key);
 	DataMap.emplace(Key, std::move(Data));
+}
+
+void DataTable::ForEachData(const DataIterateFunc& ForEachFunc)
+{
+	for (auto It = DataMap.begin(); It != DataMap.end(); ++It)
+	{
+		ForEachFunc(It->second.get());
+	}
 }
