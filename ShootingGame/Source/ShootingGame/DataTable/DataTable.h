@@ -19,6 +19,7 @@ using DataIterateFunc = std::function<void(const Data*)>;
 class DataTable
 {
 public:
+	virtual ~DataTable() {}
 	virtual const Data* GetData(const DataKey& Key);
 	virtual const Data* GetData(const FName& StringKey);
 

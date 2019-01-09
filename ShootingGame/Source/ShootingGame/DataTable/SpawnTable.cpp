@@ -36,7 +36,6 @@ void SpawnTable::Init()
 		// build spawn item list from item table
 		GetItemTable()->ForEachData([&ExcludeItemList, &IncludeTypeList, ItemSpawnWeightList = &SData->ItemSpawnWeightList](const Data* ItemDataRaw) {
 			const ItemData* Item{ static_cast<const ItemData*>(ItemDataRaw) };
-
 			if (std::find(ExcludeItemList.cbegin(), ExcludeItemList.cend(), Item->StringKey) != ExcludeItemList.cend())
 			{
 				return;
@@ -72,20 +71,33 @@ void SpawnTable::Init()
 		return true;
 	});
 
-	// todo: Get weight by type
+	JsonUtility->ForEachArray(JsonUtility->GetRootObject(), "WeightByType", [UtilPtr = JsonUtility.get(), this](const JsonObjectPtr& WeightObject) {
+		SubTypeWeightMap& SubTypeMap{ AddWeightByType(*WeightObject->GetStringField("Type"), WeightObject->GetNumberField("Weight")) };
+		UtilPtr->ForEachArray(WeightObject, "SubType", [&SubTypeMap](const JsonObjectPtr& SubTypeWeightObject) {
+			SubTypeMap.emplace(*SubTypeWeightObject->GetStringField("Type"), SubTypeWeightObject->GetNumberField("Weight"));
+			return true;
+		});
+		return true;
+	});
 
 	// calc total spawn weight
 	for(auto It = DataMap.begin(); It != DataMap.end(); ++It)
 	{
 		SpawnData* SpawnDataRaw{ static_cast<SpawnData*>(It->second.get()) };
 		SpawnWeightType TotalWeight{ 0 };
-		std::for_each(SpawnDataRaw->ItemSpawnWeightList.cbegin(), SpawnDataRaw->ItemSpawnWeightList.cend(), [&TotalWeight](const SpawnWeightPairType& SpawnWeightPair) {
+
+		std::for_each(SpawnDataRaw->ItemSpawnWeightList.begin(), SpawnDataRaw->ItemSpawnWeightList.end(), [&TotalWeight, this](SpawnWeightPairType& SpawnWeightPair) {
+			const ItemData* Item{ GetItemTable()->GetData(SpawnWeightPair.first) };
+			if (Item != nullptr)
+			{
+				SpawnWeightPair.second *= (GetWeightByType(Item->Type) * GetWeightBySubType(Item->Type, Item->SubType));
+			}
+
+			SG_LOG("Item[%s], Weight[%d]", *Item->Name, SpawnWeightPair.second);
 			TotalWeight += SpawnWeightPair.second;
 		});
-		std::sort(SpawnDataRaw->ItemSpawnWeightList.begin(), SpawnDataRaw->ItemSpawnWeightList.end(), [](const SpawnWeightPairType& lhs, const SpawnWeightPairType& rhs) {
-			return lhs.second < rhs.second;
-		});
 		SpawnDataRaw->TotalWeight = TotalWeight;
+
 	}
 }
 
@@ -97,4 +109,26 @@ const SpawnData* SpawnTable::GetData(const DataKey& Key)
 const SpawnData* SpawnTable::GetData(const FName& StringKey)
 {
 	return static_cast<const SpawnData*>(DataTable::GetData(StringKey));
+}
+
+SubTypeWeightMap& SpawnTable::AddWeightByType(const FName& Type, SpawnWeightType Weight)
+{
+	WeightByTypeMap.emplace(Type, std::make_pair(Weight, SubTypeWeightMap()));
+	return WeightByTypeMap[Type].second;
+}
+
+SpawnWeightType SpawnTable::GetWeightByType(const FName& Type)
+{
+	auto It = WeightByTypeMap.find(Type);
+	return It != WeightByTypeMap.end() ? It->second.first : 1;
+}
+
+SpawnWeightType SpawnTable::GetWeightBySubType(const FName& Type, const FName& SubType)
+{
+	auto It = WeightByTypeMap.find(Type);
+	if (It == WeightByTypeMap.end())
+		return 1;
+
+	auto SubIt = It->second.second.find(SubType);
+	return SubIt != It->second.second.end() ? SubIt->second : 1;
 }
