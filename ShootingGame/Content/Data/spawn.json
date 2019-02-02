@@ -1,32 +1,10 @@
 {
 	"SpawnerList": [{
-			"ExcludeItem": ["weapon_ar_1"],
 			"StrID": "Spawner_1",
 			"TypeList": ["Weapon", "SubWeapon", "MeleeWeapon", "ThrownWeapon", "Equipment", "Consumable", "Ammo", "Attachment"],
+			"ExcludeItemId": ["Weapon_AR_4", "Weapon_AR_5", "Weapon_AR_7", "Weapon_DMR_5", "Weapon_SR_3", "Weapon_LMG_2"],
 			"WeightOverride": [{
-					"weapon_ar_2": 3
-				}, {
-					"weapon_ar_4": 3
-				}
-			]
-		}, {
-			"ExcludeItem": ["weapon_ar_1"],
-			"StrID": "Spawner_2",
-			"TypeList": ["Weapon", "SubWeapon", "MeleeWeapon", "ThrownWeapon", "Equipment", "Consumable", "Ammo", "Attachment"],
-			"WeightOverride": [{
-					"weapon_ar_2": 3
-				}, {
-					"weapon_ar_4": 3
-				}
-			]
-		}, {
-			"ExcludeItem": ["weapon_ar_1"],
-			"StrID": "Spawner_3",
-			"TypeList": ["Weapon", "SubWeapon", "MeleeWeapon", "ThrownWeapon", "Equipment", "Consumable", "Ammo", "Attachment"],
-			"WeightOverride": [{
-					"weapon_ar_2": 3
-				}, {
-					"weapon_ar_4": 3
+					"Weapon_AR_3": 6
 				}
 			]
 		}
