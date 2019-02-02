@@ -11,7 +11,7 @@ AFieldObject::AFieldObject()
 	ModelComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MODEL"));
 	RootComponent = ModelComponent;
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> MODEL_MESH(TEXT("/Game/Geometry/Meshes/1M_Cube"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> MODEL_MESH(TEXT("/Engine/BasicShapes/Cube.Cube"));
 	if (MODEL_MESH.Succeeded())
 	{
 		ModelComponent->SetStaticMesh(MODEL_MESH.Object);

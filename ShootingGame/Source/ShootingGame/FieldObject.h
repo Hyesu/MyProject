@@ -29,5 +29,6 @@ public:
 
 	virtual void PostInitializeComponents() override;
 
+	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* ModelComponent;
 };
