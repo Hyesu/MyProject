@@ -29,32 +29,32 @@ public:
 	void Spawn();
 	void PostSpawn();
 
-	int32 GetMinCount() const { return MinCount; }
-	int32 GetMaxCount() const { return MinCount; }
+	int32 GetMinCount() const { return _minCount; }
+	int32 GetMaxCount() const { return _maxCount; }
 
 private:
 	void Init();
 
-	FTimerHandle SpawnTimerHandle = {};
+	FTimerHandle _spawnTimerHandle = {};
 
 	UPROPERTY(VisibleAnywhere)
-	UStaticMeshComponent* MeshComponent;
+	UStaticMeshComponent* _meshComponent;
 
 	UPROPERTY(EditAnywhere, Category = Spawn, Meta = (AllowPrivateAccess = true))
-	FName SpawnDataKey;
+	FName _spawnDataKey;
 
 	UPROPERTY(EditAnywhere, Category = Spawn, Meta = (AllowPrivateAccess = true))
-	float SpawnIntervalInSec{ 1.f };
+	float _spawnIntervalInSec{ 1.f };
 
 	UPROPERTY(EditAnywhere, Category = Spawn, Meta = (AllowPrivateAccess = true))
-	float SpawnRange{ 50.f };
+	float _spawnRange{ 50.f };
 
 	UPROPERTY(EditAnywhere, Category = Spawn, Meta = (AllowPrivateAccess = true))
-	bool PeriodicSpawn{ false };
+	bool _periodicSpawn{ false };
 
 	UPROPERTY(EditAnywhere, Category = Spawn, Meta = (AllowPrivateAccess = true))
-	int32 MinCount{ 1 };
+	int32 _minCount{ 1 };
 
 	UPROPERTY(EditAnywhere, Category = Spawn, Meta = (AllowPrivateAccess = true))
-	int32 MaxCount{ 1 };
+	int32 _maxCount{ 1 };
 };

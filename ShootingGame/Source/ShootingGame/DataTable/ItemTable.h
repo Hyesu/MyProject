@@ -4,11 +4,11 @@
 
 struct ItemData : public Data
 {
-	FName Type;
-	FName SubType;
-	FString Name;
-	FVector Scale;
-	unsigned int SpawnWeight{ 0 };
+	FName type;
+	FName subType;
+	FString name;
+	FVector scale;
+	unsigned int spawnWeight{ 0 };
 };
 
 class ItemTable : public DataTable
@@ -16,8 +16,8 @@ class ItemTable : public DataTable
 	DECL_SINGLETONE(ItemTable);
 
 public:
-	const ItemData* GetData(const DataKey& Key) override;
-	const ItemData* GetData(const FName& StringKey) override;
+	const ItemData* GetData(const DataKey& key) override;
+	const ItemData* GetData(const FName& stringKey) override;
 	void Init();
 };
 

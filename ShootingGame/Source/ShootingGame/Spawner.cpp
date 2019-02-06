@@ -12,8 +12,8 @@ ASpawner::ASpawner()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
-	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RANGE"));
-	RootComponent = MeshComponent;
+	_meshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RANGE"));
+	RootComponent = _meshComponent;
 }
 
 // Called when the game starts or when spawned
@@ -32,17 +32,17 @@ void ASpawner::Tick(float DeltaTime)
 
 void ASpawner::Init()
 {
-	GetWorld()->GetTimerManager().SetTimer(SpawnTimerHandle, FTimerDelegate::CreateLambda([this]() {
+	GetWorld()->GetTimerManager().SetTimer(_spawnTimerHandle, FTimerDelegate::CreateLambda([this]() {
 		this->PreSpawn();
 
-		int32 SpawnCount{ FMath::RandRange(this->GetMinCount(), this->GetMaxCount()) };
-		for (int32 i = 0; i < SpawnCount; ++i)
+		int32 spawnCount{ FMath::RandRange(this->GetMinCount(), this->GetMaxCount()) };
+		for (int32 i = 0; i < spawnCount; ++i)
 		{
 			this->Spawn();
 		}
 		this->PostSpawn();
 
-	}), SpawnIntervalInSec, PeriodicSpawn);
+	}), _spawnIntervalInSec, _periodicSpawn);
 }
 
 void ASpawner::PostInitializeComponents()
@@ -63,36 +63,37 @@ void ASpawner::PostSpawn()
 
 void ASpawner::Spawn()
 {
-	FVector TargetLocation{ GetActorLocation() };
-	TargetLocation.X += FMath::RandRange(-SpawnRange, SpawnRange);
-	TargetLocation.Y += FMath::RandRange(-SpawnRange, SpawnRange);
+	FVector targetLocation{ GetActorLocation() };
+	targetLocation.X += FMath::RandRange(-_spawnRange, _spawnRange);
+	targetLocation.Y += FMath::RandRange(-_spawnRange, _spawnRange);
 
-	auto NewFdObject = GetWorld()->SpawnActor<AFieldObject>(TargetLocation, FRotator::ZeroRotator);
-	if (NewFdObject != nullptr)
+	auto newFdObject = GetWorld()->SpawnActor<AFieldObject>(targetLocation, FRotator::ZeroRotator);
+	if (newFdObject != nullptr)
 	{
-		const SpawnData* SData{ GetSpawnTable()->GetData(SpawnDataKey) };
-		if (SData != nullptr)
+		const SpawnData* spawnData{ GetSpawnTable()->GetData(_spawnDataKey) };
+		if (spawnData != nullptr)
 		{
-			int32 Weight{ FMath::RandRange(0, SData->TotalWeight) };
-			int32 AccWeight{ 0 };
-			auto It = std::find_if(SData->ItemSpawnWeightList.cbegin(), SData->ItemSpawnWeightList.cend(), [&AccWeight, Weight](const SpawnWeightPairType& SpawnWeightPair) {
-				AccWeight += SpawnWeightPair.second;
-				return Weight <= AccWeight;
+			int32 weight{ FMath::RandRange(0, spawnData->totalWeight) };
+			int32 accWeight{ 0 };
+			auto it = std::find_if(spawnData->itemSpawnWeightList.cbegin(), spawnData->itemSpawnWeightList.cend(), [&accWeight, weight](const SpawnWeightPairType& spawnWeightPair) {
+				accWeight += spawnWeightPair.second;
+				return weight <= accWeight;
 			});
-			if (It != SData->ItemSpawnWeightList.cend())
+
+			if (it != spawnData->itemSpawnWeightList.cend())
 			{
-				SG_LOG("SpawnItem: %s", *It->first.GetPlainNameString());
+				SG_LOG("SpawnItem: %s", *it->first.GetPlainNameString());
 
 				// todo: data driven. mesh, scale, ...
 			}
 			else
 			{
-				SG_LOG("Spawn Logic Error: RandomValue[%d], AccValue[%d], SpawnKey[%s]", Weight, AccWeight, *SpawnDataKey.GetPlainNameString());
+				SG_LOG("Spawn Logic Error: RandomValue[%d], AccValue[%d], SpawnKey[%s]", weight, accWeight, *_spawnDataKey.GetPlainNameString());
 			}
 		}
 		else
 		{
-			SG_LOG("Spawn Data Null: %s", *SpawnDataKey.GetPlainNameString());
+			SG_LOG("Spawn Data Null: %s", *_spawnDataKey.GetPlainNameString());
 		}
 	}
 }

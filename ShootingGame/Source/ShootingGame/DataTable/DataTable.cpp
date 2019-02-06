@@ -1,34 +1,34 @@
 #include "DataTable.h"
 #include <algorithm>
 
-const Data* DataTable::GetData(const DataKey& Key)
+const Data* DataTable::GetData(const DataKey& key)
 {
-	auto It = DataMap.find(Key);
-	if (It != DataMap.end())
+	auto It = _dataMap.find(key);
+	if (It != _dataMap.end())
 		return It->second.get();
 
 	return nullptr;
 }
 
-const Data* DataTable::GetData(const FName& StringKey)
+const Data* DataTable::GetData(const FName& stringKey)
 {
-	DataKey* NumberKey{ KeyIndexMap.Find(StringKey) };
-	if (NumberKey == nullptr)
+	DataKey* numberKey{ _keyIndexMap.Find(stringKey) };
+	if (numberKey == nullptr)
 		return nullptr;
 
-	return GetData(*NumberKey);
+	return GetData(*numberKey);
 }
 
-void DataTable::AddData(DataKey Key, DataPtr&& Data)
+void DataTable::AddData(DataKey key, DataPtr&& data)
 {
-	KeyIndexMap.Emplace(Data->StringKey, Key);
-	DataMap.emplace(Key, std::move(Data));
+	_keyIndexMap.Emplace(data->stringKey, key);
+	_dataMap.emplace(key, std::move(data));
 }
 
-void DataTable::ForEachData(const DataIterateFunc& ForEachFunc)
+void DataTable::ForEachData(const DataIterateFunc& forEachFunc)
 {
-	for (auto It = DataMap.begin(); It != DataMap.end(); ++It)
+	for (auto It = _dataMap.begin(); It != _dataMap.end(); ++It)
 	{
-		ForEachFunc(It->second.get());
+		forEachFunc(It->second.get());
 	}
 }

@@ -12,7 +12,7 @@
 
 #include "Components/WidgetComponent.h"
 #include "InventoryComponent.h"
-#include "InvenWidget.h"
+#include "UI/InvenWidget.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AShootingGameCharacter
