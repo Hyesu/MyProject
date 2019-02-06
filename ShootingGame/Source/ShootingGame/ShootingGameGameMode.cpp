@@ -6,6 +6,7 @@
 #include "UObject/ConstructorHelpers.h"
 #include "DataTable/ItemTable.h"
 #include "DataTable/SpawnTable.h"
+#include "BlueprintCallable/ItemData.h"
 
 AShootingGameGameMode::AShootingGameGameMode()
 {
@@ -21,6 +22,8 @@ void AShootingGameGameMode::InitGame(const FString& MapName, const FString& Opti
 {
 	Super::InitGame(MapName, Options, ErrorMessage);
 	GetItemTable()->Init();
+	_itemData = NewObject<UItemData>(this);
+
 	GetSpawnTable()->Init();
 }
 

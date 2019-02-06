@@ -40,6 +40,8 @@ void ItemTable::Init()
 		AddData(key, std::move(data));
 		return true;
 	});
+
+	SG_LOG("ItemTable Init Success: size[%d]", _dataMap.size());
 }
 
 const ItemData* ItemTable::GetData(const DataKey& key)

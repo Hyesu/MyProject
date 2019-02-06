@@ -92,8 +92,6 @@ void SpawnTable::Init()
 			{
 				spawnWeightPair.second *= (GetWeightByType(item->type) * GetWeightBySubType(item->type, item->subType));
 			}
-
-			SG_LOG("Item[%s], Weight[%d]", *item->name, spawnWeightPair.second);
 			totalWeight += spawnWeightPair.second;
 		});
 		spawnDataRaw->totalWeight = totalWeight;
