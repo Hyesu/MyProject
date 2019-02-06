@@ -12,42 +12,42 @@ ItemTable* GetItemTable()
 
 void ItemTable::Init()
 {
-	static FString DataTableFilePath{ FPaths::ProjectContentDir().Append(TEXT("Data/item.json")) };
-	auto ItemJsonUtil = std::make_unique<JsonUtil>();
-	if (ItemJsonUtil->Init(DataTableFilePath) != JsonUtil::Result::Success)
+	static FString dataTableFilePath{ FPaths::ProjectContentDir().Append(TEXT("Data/item.json")) };
+	auto itemJsonUtil = std::make_unique<JsonUtil>();
+	if (itemJsonUtil->Init(dataTableFilePath) != JsonUtil::Result::Success)
 	{
-		SG_LOG("Json File Init Fail: %s", *DataTableFilePath);
+		SG_LOG("Json File Init Fail: %s", *dataTableFilePath);
 		return;
 	}
 
-	ItemJsonUtil->ForEachArray(ItemJsonUtil->GetRootObject(), "ItemList", [UtilPtr = ItemJsonUtil.get(), this](const JsonObjectPtr& ItemObject) {
-		auto Data = std::make_unique<ItemData>();
-		DataKey Key{ 0 };
-		if (ItemObject->TryGetNumberField("ID", Key) == false)
+	itemJsonUtil->ForEachArray(itemJsonUtil->GetRootObject(), "ItemList", [utilPtr = itemJsonUtil.get(), this](const JsonObjectPtr& itemObject) {
+		auto data = std::make_unique<ItemData>();
+		DataKey key{ 0 };
+		if (itemObject->TryGetNumberField("ID", key) == false)
 		{
-			SG_LOG("Key must be exist: file[%s]", *DataTableFilePath);
+			SG_LOG("Key must be exist: file[%s]", *dataTableFilePath);
 			return false;
 		}
-		Data->Key = Key;
-		Data->StringKey = *ItemObject->GetStringField("StrID");
+		data->key = key;
+		data->stringKey = *itemObject->GetStringField("StrID");
 
-		ItemObject->TryGetStringField("Name", Data->Name);
-		UtilPtr->GetNameField(ItemObject, "Type", Data->Type);
-		UtilPtr->GetNameField(ItemObject, "SubType", Data->SubType);
-		UtilPtr->GetVectorField(ItemObject, "ScaleRatio", Data->Scale);
-		ItemObject->TryGetNumberField("SpawnWeight", Data->SpawnWeight);
+		itemObject->TryGetStringField("Name", data->name);
+		utilPtr->GetNameField(itemObject, "Type", data->type);
+		utilPtr->GetNameField(itemObject, "SubType", data->subType);
+		utilPtr->GetVectorField(itemObject, "ScaleRatio", data->scale);
+		itemObject->TryGetNumberField("SpawnWeight", data->spawnWeight);
 
-		AddData(Key, std::move(Data));
+		AddData(key, std::move(data));
 		return true;
 	});
 }
 
-const ItemData* ItemTable::GetData(const DataKey& Key)
+const ItemData* ItemTable::GetData(const DataKey& key)
 {
-	return static_cast<const ItemData*>(DataTable::GetData(Key));
+	return static_cast<const ItemData*>(DataTable::GetData(key));
 }
 
-const ItemData* ItemTable::GetData(const FName& StringKey)
+const ItemData* ItemTable::GetData(const FName& stringKey)
 {
-	return static_cast<const ItemData*>(DataTable::GetData(StringKey));
+	return static_cast<const ItemData*>(DataTable::GetData(stringKey));
 }

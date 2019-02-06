@@ -9,8 +9,8 @@
 using DataKey = unsigned int;
 struct Data
 {
-	DataKey Key{ 0 };
-	FName StringKey;
+	DataKey key{ 0 };
+	FName stringKey;
 };
 using DataPtr = std::unique_ptr<Data>;
 using DataPair = std::pair<DataKey, DataPtr>;
@@ -20,14 +20,14 @@ class DataTable
 {
 public:
 	virtual ~DataTable() {}
-	virtual const Data* GetData(const DataKey& Key);
-	virtual const Data* GetData(const FName& StringKey);
+	virtual const Data* GetData(const DataKey& key);
+	virtual const Data* GetData(const FName& stringKey);
 
-	void AddData(DataKey Key, DataPtr&& Data);
-	unsigned int GetCount() const { return DataMap.size(); }
-	void ForEachData(const DataIterateFunc& ForEachFunc);
+	void AddData(DataKey key, DataPtr&& data);
+	unsigned int GetCount() const { return _dataMap.size(); }
+	void ForEachData(const DataIterateFunc& forEachFunc);
 
 protected:
-	std::unordered_map<DataKey, std::unique_ptr<struct Data>> DataMap;	
-	TMap<FName, DataKey> KeyIndexMap;
+	std::unordered_map<DataKey, std::unique_ptr<struct Data>> _dataMap;	
+	TMap<FName, DataKey> _keyIndexMap;
 };
