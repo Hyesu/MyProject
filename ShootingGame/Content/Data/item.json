@@ -577,7 +577,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8001,
-			"StrID": "Attachment_1",
+			"StrID": "Attachment_Muzzle_1",
 			"Name": "Choke (SG)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -585,7 +585,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8002,
-			"StrID": "Attachment_2",
+			"StrID": "Attachment_Muzzle_2",
 			"Name": "Compensator (AR, DMR, S12K)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -593,7 +593,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8003,
-			"StrID": "Attachment_3",
+			"StrID": "Attachment_Muzzle_3",
 			"Name": "Compensator (DMR, SR)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -601,7 +601,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8004,
-			"StrID": "Attachment_4",
+			"StrID": "Attachment_Muzzle_4",
 			"Name": "Compensator (SMG)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -609,7 +609,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8005,
-			"StrID": "Attachment_5",
+			"StrID": "Attachment_Muzzle_5",
 			"Name": "Duckbill (SG)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -617,7 +617,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8006,
-			"StrID": "Attachment_6",
+			"StrID": "Attachment_Muzzle_6",
 			"Name": "Flash Hider (AR, DMR, S12K)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -625,7 +625,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8007,
-			"StrID": "Attachment_7",
+			"StrID": "Attachment_Muzzle_7",
 			"Name": "Flash Hider (DMR, SR)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -633,7 +633,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8008,
-			"StrID": "Attachment_8",
+			"StrID": "Attachment_Muzzle_8",
 			"Name": "Flash Hider (SMG)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -641,7 +641,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8009,
-			"StrID": "Attachment_9",
+			"StrID": "Attachment_Muzzle_9",
 			"Name": "Suppressor (AR, DMR, S12K)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -649,7 +649,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8010,
-			"StrID": "Attachment_10",
+			"StrID": "Attachment_Muzzle_10",
 			"Name": "Suppressor (DMR, SR)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -657,7 +657,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8011,
-			"StrID": "Attachment_11",
+			"StrID": "Attachment_Muzzle_11",
 			"Name": "Suppressor (Handgun)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
@@ -665,271 +665,271 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 8012,
-			"StrID": "Attachment_12",
+			"StrID": "Attachment_Muzzle_12",
 			"Name": "Suppressor (SMG)",
 			"Type": "Attachment",
 			"SubType": "Muzzle",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8013,
-			"StrID": "Attachment_13",
+			"ID": 8101,
+			"StrID": "Attachment_Lower_1",
 			"Name": "Angled Foregrip (AR, SMG, DMR)",
 			"Type": "Attachment",
 			"SubType": "LowerRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8014,
-			"StrID": "Attachment_14",
+			"ID": 8102,
+			"StrID": "Attachment_Lower_2",
 			"Name": "Half Grip",
 			"Type": "Attachment",
 			"SubType": "LowerRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8015,
-			"StrID": "Attachment_15",
+			"ID": 8103,
+			"StrID": "Attachment_Lower_3",
 			"Name": "Laser Sight",
 			"Type": "Attachment",
 			"SubType": "LowerRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8016,
-			"StrID": "Attachment_16",
+			"ID": 8104,
+			"StrID": "Attachment_Lower_4",
 			"Name": "Light Grip",
 			"Type": "Attachment",
 			"SubType": "LowerRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8017,
-			"StrID": "Attachment_17",
+			"ID": 8105,
+			"StrID": "Attachment_Lower_5",
 			"Name": "Quiver for Crossbow",
 			"Type": "Attachment",
 			"SubType": "LowerRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8018,
-			"StrID": "Attachment_18",
+			"ID": 8106,
+			"StrID": "Attachment_Lower_6",
 			"Name": "Thumb Grip",
 			"Type": "Attachment",
 			"SubType": "LowerRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8019,
-			"StrID": "Attachment_19",
+			"ID": 8107,
+			"StrID": "Attachment_Lower_7",
 			"Name": "Vertical Foregrip (AR, SMG, DMR)",
 			"Type": "Attachment",
 			"SubType": "LowerRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8020,
-			"StrID": "Attachment_20",
+			"ID": 8201,
+			"StrID": "Attachment_Upper_1",
 			"Name": "15x PM II Scope",
 			"Type": "Attachment",
 			"SubType": "UpperRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8021,
-			"StrID": "Attachment_21",
+			"ID": 8202,
+			"StrID": "Attachment_Upper_2",
 			"Name": "2x Aimpoint Scope",
 			"Type": "Attachment",
 			"SubType": "UpperRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8022,
-			"StrID": "Attachment_22",
+			"ID": 8203,
+			"StrID": "Attachment_Upper_3",
 			"Name": "3x Backlit Scope",
 			"Type": "Attachment",
 			"SubType": "UpperRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8023,
-			"StrID": "Attachment_23",
+			"ID": 8204,
+			"StrID": "Attachment_Upper_4",
 			"Name": "4x ACOG Scope",
 			"Type": "Attachment",
 			"SubType": "UpperRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8024,
-			"StrID": "Attachment_24",
+			"ID": 8205,
+			"StrID": "Attachment_Upper_5",
 			"Name": "6x Scope",
 			"Type": "Attachment",
 			"SubType": "UpperRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8025,
-			"StrID": "Attachment_25",
+			"ID": 8206,
+			"StrID": "Attachment_Upper_6",
 			"Name": "8x CQBSS Scope",
 			"Type": "Attachment",
 			"SubType": "UpperRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8026,
-			"StrID": "Attachment_26",
+			"ID": 8207,
+			"StrID": "Attachment_Upper_7",
 			"Name": "Holographic Sight",
 			"Type": "Attachment",
 			"SubType": "UpperRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8027,
-			"StrID": "Attachment_27",
+			"ID": 8208,
+			"StrID": "Attachment_Upper_8",
 			"Name": "Red Dot Sight",
 			"Type": "Attachment",
 			"SubType": "UpperRail",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8028,
-			"StrID": "Attachment_28",
+			"ID": 8301,
+			"StrID": "Attachment_Mag_1",
 			"Name": "Extended Mag (AR, DMR, S12K)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8029,
-			"StrID": "Attachment_29",
+			"ID": 8302,
+			"StrID": "Attachment_Mag_2",
 			"Name": "Extended Mag (DMR, SR)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8030,
-			"StrID": "Attachment_30",
+			"ID": 8303,
+			"StrID": "Attachment_Mag_3",
 			"Name": "Extended Mag (Handgun)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8031,
-			"StrID": "Attachment_31",
+			"ID": 8304,
+			"StrID": "Attachment_Mag_4",
 			"Name": "Extended Mag (SMG)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8032,
-			"StrID": "Attachment_32",
+			"ID": 8305,
+			"StrID": "Attachment_Mag_5",
 			"Name": "Extended QuickDraw Mag (AR, DMR, S12K)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8033,
-			"StrID": "Attachment_33",
+			"ID": 8306,
+			"StrID": "Attachment_Mag_6",
 			"Name": "Extended QuickDraw Mag (DMR, SR)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 0
 		}, {
-			"ID": 8034,
-			"StrID": "Attachment_34",
+			"ID": 8307,
+			"StrID": "Attachment_Mag_7",
 			"Name": "Extended QuickDraw Mag (Handgun)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8035,
-			"StrID": "Attachment_35",
+			"ID": 8308,
+			"StrID": "Attachment_Mag_8",
 			"Name": "Extended QuickDraw Mag (SMG)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8036,
-			"StrID": "Attachment_36",
+			"ID": 8309,
+			"StrID": "Attachment_Mag_9",
 			"Name": "QuickDraw Mag (AR, DMR, S12K)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8037,
-			"StrID": "Attachment_37",
+			"ID": 8310,
+			"StrID": "Attachment_Mag_10",
 			"Name": "QuickDraw Mag (DMR, SR)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 0
 		}, {
-			"ID": 8038,
-			"StrID": "Attachment_38",
+			"ID": 8311,
+			"StrID": "Attachment_Mag_11",
 			"Name": "QuickDraw Mag (Handgun)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8039,
-			"StrID": "Attachment_39",
+			"ID": 8312,
+			"StrID": "Attachment_Mag_12",
 			"Name": "QuickDraw Mag (SMG)",
 			"Type": "Attachment",
 			"SubType": "Magazine",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8040,
-			"StrID": "Attachment_40",
+			"ID": 8401,
+			"StrID": "Attachment_Sotck_1",
 			"Name": "Bullet Loops for S1897, S686",
 			"Type": "Attachment",
 			"SubType": "Stock",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8041,
-			"StrID": "Attachment_41",
+			"ID": 8402,
+			"StrID": "Attachment_Sotck_2",
 			"Name": "Bullet Loops for Snipers",
 			"Type": "Attachment",
 			"SubType": "Stock",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8042,
-			"StrID": "Attachment_42",
+			"ID": 8403,
+			"StrID": "Attachment_Sotck_3",
 			"Name": "Cheek Pad (DMR, SR)",
 			"Type": "Attachment",
 			"SubType": "Stock",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8043,
-			"StrID": "Attachment_43",
+			"ID": 8404,
+			"StrID": "Attachment_Sotck_4",
 			"Name": "Lower Sniper CheekPad for Vss",
 			"Type": "Attachment",
 			"SubType": "Stock",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 0
 		}, {
-			"ID": 8044,
-			"StrID": "Attachment_44",
+			"ID": 8405,
+			"StrID": "Attachment_Sotck_5",
 			"Name": "Stock for Micro UZI",
 			"Type": "Attachment",
 			"SubType": "Stock",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
-			"ID": 8045,
-			"StrID": "Attachment_45",
+			"ID": 8406,
+			"StrID": "Attachment_Sotck_6",
 			"Name": "Tactical Stock for M416, Vector",
 			"Type": "Attachment",
 			"SubType": "Stock",
