@@ -470,7 +470,7 @@
 			"Type": "Consumable",
 			"SubType": "Medical",
 			"ScaleRatio": [1, 1, 1],
-			"SpawnWeight": 12
+			"SpawnWeight": 4
 		}, {
 			"ID": 6003,
 			"StrID": "Consumable_3",
@@ -478,7 +478,7 @@
 			"Type": "Consumable",
 			"SubType": "Medical",
 			"ScaleRatio": [1, 1, 1],
-			"SpawnWeight": 12
+			"SpawnWeight": 1
 		}, {
 			"ID": 6101,
 			"StrID": "Consumable_4",
@@ -494,7 +494,7 @@
 			"Type": "Consumable",
 			"SubType": "Drink",
 			"ScaleRatio": [1, 1, 1],
-			"SpawnWeight": 12
+			"SpawnWeight": 4
 		}, {
 			"ID": 6103,
 			"StrID": "Consumable_6",
@@ -502,7 +502,7 @@
 			"Type": "Consumable",
 			"SubType": "Drink",
 			"ScaleRatio": [1, 1, 1],
-			"SpawnWeight": 12
+			"SpawnWeight": 1
 		}, {
 			"ID": 6201,
 			"StrID": "Consumable_7",
@@ -510,7 +510,7 @@
 			"Type": "Consumable",
 			"SubType": "Fuel",
 			"ScaleRatio": [1, 1, 1],
-			"SpawnWeight": 12
+			"SpawnWeight": 1
 		}, {
 			"ID": 7001,
 			"StrID": "Ammo_1",

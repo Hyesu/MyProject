@@ -101,6 +101,20 @@
 				}
 			]
 		}, {
+			"Type": "Consumable",
+			"Weight": 3,
+			"SubType": [{
+					"Type": "Medical",
+					"Weight": 5
+				}, {
+					"Type": "Drink",
+					"Weight": 3
+				}, {
+					"Type": "Fuel",
+					"Weight": 1
+				}
+			]
+		}, {
 			"Type": "Attachment",
 			"Weight": 2,
 			"SubType": [{
