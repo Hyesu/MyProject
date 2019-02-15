@@ -369,7 +369,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 5001,
-			"StrID": "Equipment_1",
+			"StrID": "Equipment_Helmet_1",
 			"Name": "Helmet (Lv.1)",
 			"Type": "Equipment",
 			"SubType": "Helmet",
@@ -377,7 +377,7 @@
 			"SpawnWeight": 12
 		}, {
 			"ID": 5002,
-			"StrID": "Equipment_2",
+			"StrID": "Equipment_Helmet_2",
 			"Name": "Helmet (Lv.1)",
 			"Type": "Equipment",
 			"SubType": "Helmet",
@@ -385,7 +385,7 @@
 			"SpawnWeight": 12
 		}, {
 			"ID": 5003,
-			"StrID": "Equipment_3",
+			"StrID": "Equipment_Helmet_3",
 			"Name": "Helmet (Lv.2)",
 			"Type": "Equipment",
 			"SubType": "Helmet",
@@ -393,7 +393,7 @@
 			"SpawnWeight": 4
 		}, {
 			"ID": 5004,
-			"StrID": "Equipment_4",
+			"StrID": "Equipment_Helmet_4",
 			"Name": "Helmet (Lv.2)",
 			"Type": "Equipment",
 			"SubType": "Helmet",
@@ -401,7 +401,7 @@
 			"SpawnWeight": 4
 		}, {
 			"ID": 5005,
-			"StrID": "Equipment_5",
+			"StrID": "Equipment_Helmet_5",
 			"Name": "Helmet (Lv.3)",
 			"Type": "Equipment",
 			"SubType": "Helmet",
@@ -409,7 +409,7 @@
 			"SpawnWeight": 0
 		}, {
 			"ID": 5101,
-			"StrID": "Equipment_6",
+			"StrID": "Equipment_Armor_1",
 			"Name": "Police Vest (Lv.1)",
 			"Type": "Equipment",
 			"SubType": "Armor",
@@ -417,7 +417,7 @@
 			"SpawnWeight": 12
 		}, {
 			"ID": 5102,
-			"StrID": "Equipment_7",
+			"StrID": "Equipment_Armor_2",
 			"Name": "Police Vest (Lv.2)",
 			"Type": "Equipment",
 			"SubType": "Armor",
@@ -425,7 +425,7 @@
 			"SpawnWeight": 4
 		}, {
 			"ID": 5103,
-			"StrID": "Equipment_8",
+			"StrID": "Equipment_Armor_3",
 			"Name": "Military Vest (Lv.3)",
 			"Type": "Equipment",
 			"SubType": "Armor",
@@ -433,7 +433,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 5201,
-			"StrID": "Equipment_9",
+			"StrID": "Equipment_BackPack_1",
 			"Name": "Backpack (Lv.1)",
 			"Type": "Equipment",
 			"SubType": "Backpack",
@@ -441,7 +441,7 @@
 			"SpawnWeight": 12
 		}, {
 			"ID": 5202,
-			"StrID": "Equipment_10",
+			"StrID": "Equipment_BackPack_2",
 			"Name": "Backpack (Lv.2)",
 			"Type": "Equipment",
 			"SubType": "Backpack",
@@ -449,15 +449,23 @@
 			"SpawnWeight": 4
 		}, {
 			"ID": 5203,
-			"StrID": "Equipment_11",
+			"StrID": "Equipment_BackPack_3",
 			"Name": "Backpack (Lv.3)",
 			"Type": "Equipment",
 			"SubType": "Backpack",
 			"ScaleRatio": [1, 1, 1],
 			"SpawnWeight": 1
 		}, {
+			"ID": 5301,
+			"StrID": "Equipment_Belt_1",
+			"Name": "UtilityBelt",
+			"Type": "Equipment",
+			"SubType": "Belt",
+			"ScaleRatio": [1, 1, 1],
+			"SpawnWeight": 1
+		}, {
 			"ID": 6001,
-			"StrID": "Consumable_1",
+			"StrID": "Consumable_Medical_1",
 			"Name": "Bandage",
 			"Type": "Consumable",
 			"SubType": "Medical",
@@ -465,7 +473,7 @@
 			"SpawnWeight": 12
 		}, {
 			"ID": 6002,
-			"StrID": "Consumable_2",
+			"StrID": "Consumable_Medical_2",
 			"Name": "First Aid Kit",
 			"Type": "Consumable",
 			"SubType": "Medical",
@@ -473,7 +481,7 @@
 			"SpawnWeight": 4
 		}, {
 			"ID": 6003,
-			"StrID": "Consumable_3",
+			"StrID": "Consumable_Medical_3",
 			"Name": "Med Kit",
 			"Type": "Consumable",
 			"SubType": "Medical",
@@ -481,7 +489,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 6101,
-			"StrID": "Consumable_4",
+			"StrID": "Consumable_Drink_1",
 			"Name": "Energy Drink",
 			"Type": "Consumable",
 			"SubType": "Drink",
@@ -489,7 +497,7 @@
 			"SpawnWeight": 12
 		}, {
 			"ID": 6102,
-			"StrID": "Consumable_5",
+			"StrID": "Consumable_Drink_2",
 			"Name": "Painkiller",
 			"Type": "Consumable",
 			"SubType": "Drink",
@@ -497,7 +505,7 @@
 			"SpawnWeight": 4
 		}, {
 			"ID": 6103,
-			"StrID": "Consumable_6",
+			"StrID": "Consumable_Drink_3",
 			"Name": "Adrenaline Syringe",
 			"Type": "Consumable",
 			"SubType": "Drink",
@@ -505,7 +513,7 @@
 			"SpawnWeight": 1
 		}, {
 			"ID": 6201,
-			"StrID": "Consumable_7",
+			"StrID": "Consumable_Fuel_1",
 			"Name": "Gas Can",
 			"Type": "Consumable",
 			"SubType": "Fuel",
