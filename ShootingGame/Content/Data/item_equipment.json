@@ -1,0 +1,76 @@
+{
+	"ItemList": [{
+			"ID": 5001,
+			"StrID": "Equipment_Helmet_1",
+			"Durability": 80,
+			"Def": 30,
+			"CapacityIncrease": 0
+		},{
+				"ID": 5002,
+				"StrID": "Equipment_Helmet_2",
+				"Durability": 80,
+				"Def": 30,
+				"CapacityIncrease": 0
+		},{
+				"ID": 5003,
+				"StrID": "Equipment_Helmet_3",
+				"Durability": 150,
+				"Def": 40,
+				"CapacityIncrease": 0
+		},{
+				"ID": 5004,
+				"StrID": "Equipment_Helmet_4",
+				"Durability": 150,
+				"Def": 40,
+				"CapacityIncrease": 0
+		},{
+				"ID": 5005,
+				"StrID": "Equipment_Helmet_5",
+				"Durability": 230,
+				"Def": 55,
+				"CapacityIncrease": 0
+		},{
+				"ID": 5101,
+				"StrID": "Equipment_Armor_1",
+				"Durability": 200,
+				"Def": 30,
+				"CapacityIncrease": 50
+		},{
+				"ID": 5102,
+				"StrID": "Equipment_Armor_2",
+				"Durability": 220,
+				"Def": 40,
+				"CapacityIncrease": 50
+		},{
+				"ID": 5104,
+				"StrID": "Equipment_Armor_3",
+				"Durability": 250,
+				"Def": 55,
+				"CapacityIncrease": 50
+		},{
+				"ID": 5201,
+				"StrID": "Equipment_BackPack_1",
+				"Durability": 0,
+				"Def": 0,
+				"CapacityIncrease": 150
+		},{
+				"ID": 5202,
+				"StrID": "Equipment_BackPack_2",
+				"Durability": 0,
+				"Def": 0,
+				"CapacityIncrease": 200
+		},{
+				"ID": 5203,
+				"StrID": "Equipment_BackPack_3",
+				"Durability": 0,
+				"Def": 0,
+				"CapacityIncrease": 250
+		},{
+				"ID": 5301,
+				"StrID": "Equipment_Belt_1",
+				"Durability": 0,
+				"Def": 0,
+				"CapacityIncrease": 50
+		}
+		]
+}
