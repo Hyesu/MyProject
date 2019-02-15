@@ -1,0 +1,60 @@
+{
+	"ItemList": [{
+			"ID": 3001,
+			"StrID": "ThrownWeapon_1",
+			"DefIgnore": true,
+			"DamageTarget": "torso",
+			"Damage": 100,
+      "DamagePerSec": 0,
+      "MaxDamageRange": 3,
+      "Range": 6,
+      "Effect": "Knockback",
+      "RpmSemiLimit": 60,
+      "Delay": 3,
+      "Capacity": 18,
+      "Stack": 100
+		},{
+  			"ID": 3002,
+  			"StrID": "ThrownWeapon_2",
+  			"DefIgnore": false,
+  			"DamageTarget": "head",
+  			"Damage": 0,
+        "DamagePerSec": 0,
+        "MaxDamageRange": 5,
+        "Range": 8,
+        "Effect": "Blind",
+        "RpmSemiLimit": 60,
+        "Delay": 3,
+        "Capacity": 12,
+        "Stack": 100
+  	},{
+  			"ID": 3003,
+  			"StrID": "ThrownWeapon_3",
+  			"DefIgnore": false,
+  			"DamageTarget": "head",
+  			"Damage": 0,
+        "DamagePerSec": 0,
+        "MaxDamageRange": 6,
+        "Range": 6,
+        "Effect": "Smoke",
+        "RpmSemiLimit": 60,
+        "Delay": 3,
+        "Capacity": 14,
+        "Stack": 100
+  	},{
+  			"ID": 3004,
+  			"StrID": "ThrownWeapon_4",
+  			"DefIgnore": true,
+  			"DamageTarget": "torso",
+  			"Damage": 0,
+        "DamagePerSec": 10,
+        "MaxDamageRange": 3,
+        "Range": 3,
+        "Effect": "Flame",
+        "RpmSemiLimit": 60,
+        "Delay": 0,
+        "Capacity": 16,
+        "Stack": 100
+  	}
+  ]
+}
