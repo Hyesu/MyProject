@@ -18,8 +18,15 @@ public:
 	void Logout(AController* Exiting) override;
 
 	UFUNCTION(BlueprintCallable)
-	UItemData* GetItemData() const { return _itemData; }
+	class UItemData* GetItemData() const { return _itemData; }
+	class UUIManager* GetUIManager() const { return _uiManager; }
 
 private:
-	class UItemData* _itemData;
+	UPROPERTY()
+	UItemData* _itemData;
+
+	UPROPERTY()
+	UUIManager* _uiManager;
 };
+
+#define UI_MANAGER	((AShootingGameGameMode*)GetWorld()->GetAuthGameMode())->GetUIManager()

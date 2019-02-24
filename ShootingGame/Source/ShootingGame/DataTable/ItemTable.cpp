@@ -12,7 +12,7 @@ ItemTable* GetItemTable()
 
 void ItemTable::Init()
 {
-	static FString dataTableFilePath{ FPaths::ProjectContentDir().Append(TEXT("Data/item.json")) };
+	static FString dataTableFilePath{ FPaths::ProjectContentDir().Append(TEXT("Data/ui.json")) };
 	auto itemJsonUtil = std::make_unique<JsonUtil>();
 	if (itemJsonUtil->Init(dataTableFilePath) != JsonUtil::Result::Success)
 	{

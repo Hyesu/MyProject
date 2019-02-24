@@ -7,6 +7,7 @@
 #include "DataTable/ItemTable.h"
 #include "DataTable/SpawnTable.h"
 #include "BlueprintCallable/ItemData.h"
+#include "Manager/UIManager.h"
 
 AShootingGameGameMode::AShootingGameGameMode()
 {
@@ -22,9 +23,12 @@ void AShootingGameGameMode::InitGame(const FString& MapName, const FString& Opti
 {
 	Super::InitGame(MapName, Options, ErrorMessage);
 	GetItemTable()->Init();
+	GetSpawnTable()->Init();
+
 	_itemData = NewObject<UItemData>(this);
 
-	GetSpawnTable()->Init();
+	_uiManager = NewObject<UUIManager>(this);
+	_uiManager->Init(GetWorld());
 }
 
 void AShootingGameGameMode::Logout(AController* Exiting)

@@ -72,15 +72,6 @@ public:
 public:
 	virtual void PostInitializeComponents() override;
 
-	void ToggleInventory();
-
-	// inventory
-	UPROPERTY(VisibleAnywhere, Category = Inventory)
-	class UInventoryComponent* Inventory;
-
-	UPROPERTY(VisibleAnywhere, Category = UI)
-	class UWidgetComponent* InvenUI;
-
 private:
-	void InitInventory();
+	void ToggleInventory();
 };
