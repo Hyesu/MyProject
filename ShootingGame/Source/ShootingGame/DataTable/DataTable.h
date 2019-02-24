@@ -27,7 +27,27 @@ public:
 	unsigned int GetCount() const { return _dataMap.size(); }
 	void ForEachData(const DataIterateFunc& forEachFunc);
 
+	virtual void Init() = 0;
+	virtual void PostInit() = 0;
+	virtual void Finalize() = 0;
+
 protected:
 	std::unordered_map<DataKey, std::unique_ptr<struct Data>> _dataMap;	
 	TMap<FName, DataKey> _keyIndexMap;
 };
+
+class DataManager
+{
+	DECL_SINGLETONE(DataManager);
+
+public:
+	void Init();
+	void Finalize();
+
+private:
+	void DoInit();
+
+	std::list<DataTable*> _tables;
+};
+
+DataManager* GetDataManager();

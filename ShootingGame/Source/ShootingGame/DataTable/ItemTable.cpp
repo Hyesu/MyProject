@@ -53,3 +53,13 @@ const ItemData* ItemTable::GetData(const FName& stringKey)
 {
 	return static_cast<const ItemData*>(DataTable::GetData(stringKey));
 }
+
+void ItemTable::PostInit()
+{
+
+}
+
+void ItemTable::Finalize()
+{
+	DestroyInstance();
+}

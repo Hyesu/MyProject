@@ -16,9 +16,12 @@ class ItemTable : public DataTable
 	DECL_SINGLETONE(ItemTable);
 
 public:
+	void Init() override;
+	void PostInit() override;
+	void Finalize() override;
+
 	const ItemData* GetData(const DataKey& key) override;
 	const ItemData* GetData(const FName& stringKey) override;
-	void Init();
 };
 
 ItemTable* GetItemTable();

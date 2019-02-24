@@ -22,8 +22,7 @@ AShootingGameGameMode::AShootingGameGameMode()
 void AShootingGameGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
 {
 	Super::InitGame(MapName, Options, ErrorMessage);
-	GetItemTable()->Init();
-	GetSpawnTable()->Init();
+	GetDataManager()->Init();
 
 	_itemData = NewObject<UItemData>(this);
 
@@ -34,6 +33,6 @@ void AShootingGameGameMode::InitGame(const FString& MapName, const FString& Opti
 void AShootingGameGameMode::Logout(AController* Exiting)
 {
 	Super::Logout(Exiting);
-	GetItemTable()->DestroyInstance();
-	GetSpawnTable()->DestroyInstance();
+	GetDataManager()->Finalize();
+	GetDataManager()->DestroyInstance();
 }

@@ -33,14 +33,14 @@ void ASpawner::Tick(float DeltaTime)
 void ASpawner::Init()
 {
 	GetWorld()->GetTimerManager().SetTimer(_spawnTimerHandle, FTimerDelegate::CreateLambda([this]() {
-		this->PreSpawn();
+		PreSpawn();
 
-		int32 spawnCount{ FMath::RandRange(this->GetMinCount(), this->GetMaxCount()) };
-		for (int32 i = 0; i < spawnCount; ++i)
-		{
-			this->Spawn();
+		int32 spawnCount{ FMath::RandRange(_minCount, _maxCount) };
+		for (int32 i = 0; i < spawnCount; ++i) {
+			Spawn();
 		}
-		this->PostSpawn();
+
+		PostSpawn();
 
 	}), _spawnIntervalInSec, _periodicSpawn);
 }
@@ -68,32 +68,29 @@ void ASpawner::Spawn()
 	targetLocation.Y += FMath::RandRange(-_spawnRange, _spawnRange);
 
 	auto newFdObject = GetWorld()->SpawnActor<AFieldObject>(targetLocation, FRotator::ZeroRotator);
-	if (newFdObject != nullptr)
-	{
-		const SpawnData* spawnData{ GetSpawnTable()->GetData(_spawnDataKey) };
-		if (spawnData != nullptr)
-		{
-			int32 weight{ FMath::RandRange(0, spawnData->totalWeight) };
-			int32 accWeight{ 0 };
-			auto it = std::find_if(spawnData->itemSpawnWeightList.cbegin(), spawnData->itemSpawnWeightList.cend(), [&accWeight, weight](const SpawnWeightPairType& spawnWeightPair) {
-				accWeight += spawnWeightPair.second;
-				return weight <= accWeight;
-			});
-
-			if (it != spawnData->itemSpawnWeightList.cend())
-			{
-				SG_LOG("SpawnItem: %s", *it->first.GetPlainNameString());
-
-				// todo: data driven. mesh, scale, ...
-			}
-			else
-			{
-				SG_LOG("Spawn Logic Error: RandomValue[%d], AccValue[%d], SpawnKey[%s]", weight, accWeight, *_spawnDataKey.GetPlainNameString());
-			}
-		}
-		else
-		{
-			SG_LOG("Spawn Data Null: %s", *_spawnDataKey.GetPlainNameString());
-		}
+	if (newFdObject == nullptr) {
+		SG_ERROR("Spawn fail: key[%s]", *_spawnDataKey.ToString());
+		return;
 	}
+
+	const SpawnData* spawnData{ GetSpawnTable()->GetData(_spawnDataKey) };
+	if (spawnData == nullptr) {
+		SG_ERROR("Spawn data is null: key[%s]", *_spawnDataKey.ToString());
+		return;
+	}
+
+	int32 weight{ FMath::RandRange(0, spawnData->totalWeight) };
+	int32 accWeight{ 0 };
+	auto it = std::find_if(spawnData->itemSpawnWeightList.cbegin(), spawnData->itemSpawnWeightList.cend(), [&accWeight, weight](const SpawnWeightPairType& spawnWeightPair) {
+		accWeight += spawnWeightPair.second;
+		return weight <= accWeight;
+	});
+
+	if (it == spawnData->itemSpawnWeightList.cend()) {
+		SG_ERROR("Spawn Logic Error: RandomValue[%d], AccValue[%d], SpawnKey[%s]", weight, accWeight, *_spawnDataKey.GetPlainNameString());
+		return;
+	}
+
+	// todo: set item data
+	SG_LOG("Spawn: [%s]", *it->first.ToString());
 }

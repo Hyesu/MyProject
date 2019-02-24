@@ -1,5 +1,9 @@
 #include "DataTable.h"
+#include "ItemTable.h"
+#include "SpawnTable.h"
 #include <algorithm>
+
+IMPL_SINGLETONE(DataManager);
 
 const Data* DataTable::GetData(const DataKey& key)
 {
@@ -31,4 +35,37 @@ void DataTable::ForEachData(const DataIterateFunc& forEachFunc)
 	{
 		forEachFunc(It->second.get());
 	}
+}
+
+DataManager* GetDataManager()
+{
+	return DataManager::GetInstance();
+}
+
+void DataManager::Init()
+{
+#define REGISTER_TABLE(tableName) _tables.push_back(Get##tableName##Table())
+
+	REGISTER_TABLE(Item);
+	REGISTER_TABLE(Spawn);
+
+	DoInit();
+}
+
+void DataManager::Finalize()
+{
+	std::for_each(_tables.begin(), _tables.end(), [](DataTable* table) {
+		table->Finalize();
+	});
+}
+
+void DataManager::DoInit()
+{
+	std::for_each(_tables.begin(), _tables.end(), [](DataTable* table) {
+		table->Init();
+	});
+
+	std::for_each(_tables.begin(), _tables.end(), [](DataTable* table) {
+		table->PostInit();
+	});
 }

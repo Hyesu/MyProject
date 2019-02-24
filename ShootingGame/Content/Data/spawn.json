@@ -3,137 +3,21 @@
 			"StrID": "Spawner_1",
 			"TypeList": ["Weapon", "SubWeapon", "MeleeWeapon", "ThrownWeapon", "Equipment", "Consumable", "Ammo", "Attachment"],
 			"ExcludeItemId": ["Weapon_AR_4", "Weapon_AR_5", "Weapon_AR_7", "Weapon_DMR_5", "Weapon_SR_3", "Weapon_LMG_2"],
-			"WeightOverride": [{
-					"Weapon_AR_3": 6
+			"WeightOverride": {
+					"Weapon_AR_3": 6,
+					"Weapon_AR_4": 6
 				}
-			]
 		}
 	],
 	"WeightByType": [{
 			"Type": "Weapon",
 			"Weight": 6,
-			"SubType": [{
-					"Type": "AR",
-					"Weight": 24
-				}, {
-					"Type": "DMR",
-					"Weight": 14
-				}, {
-					"Type": "ETC",
-					"Weight": 6
-				}, {
-					"Type": "LMG",
-					"Weight": 3
-				}, {
-					"Type": "SG",
-					"Weight": 24
-				}, {
-					"Type": "SMG",
-					"Weight": 24
-				}, {
-					"Type": "SR",
-					"Weight": 5
+			"SubType": {
+				"AR" : 24,
+				"DMR" : 14,
+				"ETC" : 6,
+				"LMG" : 3
 				}
-			]
-		}, {
-			"Type": "SubWeapon",
-			"Weight": 2,
-			"SubType": [{
-					"Type": "Auto",
-					"Weight": 1
-				}, {
-					"Type": "Revolver",
-					"Weight": 1
-				}, {
-					"Type": "SG",
-					"Weight": 1
-				}, {
-					"Type": "SemiAuto",
-					"Weight": 1
-				}
-			]
-		}, {
-			"Type": "ThrownWeapon",
-			"Weight": 2,
-			"SubType": [{
-					"Type": "Flashbang",
-					"Weight": 1
-				}, {
-					"Type": "Grenade",
-					"Weight": 1
-				}, {
-					"Type": "Molotov",
-					"Weight": 1
-				}, {
-					"Type": "Smoke",
-					"Weight": 1
-				}
-			]
-		}, {
-			"Type": "MeleeWeapon",
-			"Weight": 1,
-			"SubType": [{
-					"Type": "Crowbar",
-					"Weight": 1
-				}, {
-					"Type": "FryPan",
-					"Weight": 1
-				}, {
-					"Type": "Machete",
-					"Weight": 1
-				}, {
-					"Type": "Sickle",
-					"Weight": 1
-				}
-			]
-		}, {
-			"Type": "Equipment",
-			"Weight": 4,
-			"SubType": [{
-					"Type": "Armor",
-					"Weight": 1
-				}, {
-					"Type": "Backpack",
-					"Weight": 1
-				}, {
-					"Type": "Helmet",
-					"Weight": 1
-				}
-			]
-		}, {
-			"Type": "Consumable",
-			"Weight": 3,
-			"SubType": [{
-					"Type": "Medical",
-					"Weight": 5
-				}, {
-					"Type": "Drink",
-					"Weight": 3
-				}, {
-					"Type": "Fuel",
-					"Weight": 1
-				}
-			]
-		}, {
-			"Type": "Attachment",
-			"Weight": 2,
-			"SubType": [{
-					"Type": "LowerRail",
-					"Weight": 1
-				}, {
-					"Type": "Magazine",
-					"Weight": 1
-				}, {
-					"Type": "Muzzle",
-					"Weight": 1
-				}, {
-					"Type": "Stock",
-					"Weight": 1
-				}, {
-					"Type": "UpperRail",
-					"Weight": 1
-				}
-			]
-		}
+			}
 	]
 }
