@@ -3,3 +3,9 @@ ShootingGame/Binaries
 ShootingGame/Saved
 ShootingGame/Content/InfinityBladeGrassLands
 ShootingGame/Intermediate
+*.svn-base
+*.uasset
+*/.svn/*
+*/.vs/*
+ShootingGame/ShootingGame.sln
+ShootingGame/x64/*
