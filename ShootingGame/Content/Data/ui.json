@@ -1,7 +1,7 @@
 {
 	"UI": [{
 			"StrID": "Inventory",
-			"Path": "/Game/UI/HUD.HUD_C"
+			"Path": "/Game/UI/Inventory/Main.Main_C"
 		}
 	]
 }

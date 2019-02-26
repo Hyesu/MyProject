@@ -13,11 +13,67 @@
 			"Type": "Weapon",
 			"Weight": 6,
 			"SubType": {
-				"AR" : 24,
-				"DMR" : 14,
-				"ETC" : 6,
-				"LMG" : 3
-				}
+					"AR": 24,
+					"DMR": 14,
+					"ETC": 6,
+					"LMG": 3,
+					"SG": 24,
+					"SMG": 24,
+					"SR": 5
 			}
+		}, {
+			"Type": "SubWeapon",
+			"Weight": 2,
+			"SubType": {
+					"Auto": 1,
+					"Revolver": 1,
+					"SG": 1,
+					"SemiAuto": 1
+			}
+		}, {
+			"Type": "ThrownWeapon",
+			"Weight": 2,
+			"SubType": {
+					"Flashbang": 1,
+					"Grenade": 1,
+					"Molotov": 1,
+					"Smoke": 1
+			}
+		}, {
+			"Type": "MeleeWeapon",
+			"Weight": 1,
+			"SubType": {
+					"Crowbar": 1,
+					"FryPan": 1,
+					"Machete": 1,
+					"Sickle": 1
+				}
+		}, {
+			"Type": "Equipment",
+			"Weight": 4,
+			"SubType": {
+					"Armor": 1,
+					"Backpack": 1,
+					"Helmet": 1
+			}
+		}, {
+			"Type": "Consumable",
+			"Weight": 3,
+			"SubType": {
+					"Medical": 5,
+					"Drink": 3,
+					"Fuel": 1
+				}
+		}, {
+			"Type": "Attachment",
+			"Weight": 2,
+			"SubType": {
+					"LowerRail": 1,
+					"Magazine": 1,
+					"Muzzle": 1,
+					"Stock": 1,
+					"UpperRail": 1
+			}
+		}
 	]
 }
