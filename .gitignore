@@ -9,3 +9,7 @@ ShootingGame/Intermediate
 */.vs/*
 ShootingGame/ShootingGame.sln
 ShootingGame/x64/*
+ShootingGame/Content/KiteDemo/Maps/Showcase.umap
+ShootingGame/Content/KiteDemo/Maps/Overview.umap
+ShootingGame/Content/Data
+*.umap
