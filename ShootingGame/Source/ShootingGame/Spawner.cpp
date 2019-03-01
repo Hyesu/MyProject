@@ -2,8 +2,12 @@
 
 #include "Spawner.h"
 #include "ShootingGame.h"
+#include "ShootingGameGameMode.h"
 #include "FieldObject.h"
+#include "Components/StaticMeshComponent.h"
 #include "DataTable/SpawnTable.h"
+#include "DataTable/ItemTable.h"
+#include "Manager/ResourceManager.h"
 #include <algorithm>
 
 // Sets default values
@@ -87,10 +91,20 @@ void ASpawner::Spawn()
 	});
 
 	if (it == spawnData->itemSpawnWeightList.cend()) {
-		SG_ERROR("Spawn Logic Error: RandomValue[%d], AccValue[%d], SpawnKey[%s]", weight, accWeight, *_spawnDataKey.GetPlainNameString());
+		SG_ERROR("Spawn Logic Error: RandomValue[%d], AccValue[%d], SpawnKey[%s]", weight, accWeight, *_spawnDataKey.ToString());
 		return;
 	}
 
-	// todo: set item data
 	SG_LOG("Spawn: [%s]", *it->first.ToString());
+
+	const ItemData* itemData{ GetItemTable()->GetData(it->first) };
+	if (itemData == nullptr) {
+		SG_ERROR("Spawn Item is null: spawner[%s], item[%s]", *_spawnDataKey.ToString(), *it->first.ToString());
+		return;
+	}
+
+	UStaticMesh* mesh = RESOURCE_MGR->GetMesh(*itemData->meshPath);
+	if (mesh != nullptr) {
+		newFdObject->ModelComponent->SetStaticMesh(mesh);
+	}
 }

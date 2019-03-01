@@ -7,6 +7,7 @@ struct ItemData : public Data
 	FName type;
 	FName subType;
 	FString name;
+	FString meshPath;
 	FVector scale;
 	unsigned int spawnWeight{ 0 };
 };

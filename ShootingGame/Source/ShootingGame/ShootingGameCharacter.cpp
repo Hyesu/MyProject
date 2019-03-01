@@ -146,5 +146,5 @@ void AShootingGameCharacter::PostInitializeComponents()
 void AShootingGameCharacter::ToggleInventory()
 {
 	SG_LOG("Toggle inventory");
-	UI_MANAGER->ToggleUI(TEXT("Inventory"));
+	UI_MGR->ToggleUI(TEXT("Inventory"));
 }

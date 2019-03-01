@@ -19,7 +19,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	class UItemData* GetItemData() const { return _itemData; }
+
 	class UUIManager* GetUIManager() const { return _uiManager; }
+	class UResourceManager* GetResourceManager() const { return _resourceManager; }
 
 private:
 	UPROPERTY()
@@ -27,6 +29,10 @@ private:
 
 	UPROPERTY()
 	UUIManager* _uiManager;
+
+	UPROPERTY()
+	UResourceManager* _resourceManager;
 };
 
-#define UI_MANAGER	((AShootingGameGameMode*)GetWorld()->GetAuthGameMode())->GetUIManager()
+#define UI_MGR			((AShootingGameGameMode*)GetWorld()->GetAuthGameMode())->GetUIManager()
+#define RESOURCE_MGR	((AShootingGameGameMode*)GetWorld()->GetAuthGameMode())->GetResourceManager()

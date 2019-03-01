@@ -36,6 +36,7 @@ void ItemTable::Init()
 		utilPtr->GetNameField(itemObject, "SubType", data->subType);
 		utilPtr->GetVectorField(itemObject, "ScaleRatio", data->scale);
 		itemObject->TryGetNumberField("SpawnWeight", data->spawnWeight);
+		itemObject->TryGetStringField("Mesh", data->meshPath);
 
 		AddData(key, std::move(data));
 		return true;

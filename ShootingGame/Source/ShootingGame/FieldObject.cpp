@@ -10,10 +10,10 @@ AFieldObject::AFieldObject()
 	PrimaryActorTick.bCanEverTick = false;
 	ModelComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MODEL"));
 	RootComponent = ModelComponent;
+	SpawnCollisionHandlingMethod = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> MODEL_MESH(TEXT("/Engine/BasicShapes/Cube.Cube"));
-	if (MODEL_MESH.Succeeded())
-	{
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> MODEL_MESH(*DEFAULT_MODEL_PATH);
+	if (MODEL_MESH.Succeeded())	{
 		ModelComponent->SetStaticMesh(MODEL_MESH.Object);
 	}
 }
