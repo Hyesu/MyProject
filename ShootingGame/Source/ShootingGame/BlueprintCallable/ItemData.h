@@ -15,14 +15,12 @@ class SHOOTINGGAME_API UItemData : public UObject
 	GENERATED_BODY()
 	
 public:
-	UFUNCTION(BlueprintCallable)
-	FString GetName(const FString& stringKey) const;
+	UFUNCTION(BlueprintPure, Category="Data|Item")
+	static FString GetItem_Name(const FString& stringKey);
 
-	UFUNCTION(BlueprintCallable)
-	FString GetType(const FString& stringKey) const;
+	UFUNCTION(BlueprintPure, Category = "Data|Item")
+	static FString GetItem_Type(const FString& stringKey);
 
-	UFUNCTION(BlueprintCallable)
-	FString GetSubType(const FString& stringKey) const;
-
-private:
+	UFUNCTION(BlueprintPure, Category = "Data|Item")
+	static FString GetItem_SubType(const FString& stringKey);
 };

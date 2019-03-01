@@ -17,16 +17,10 @@ public:
 	void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
 	void Logout(AController* Exiting) override;
 
-	UFUNCTION(BlueprintCallable)
-	class UItemData* GetItemData() const { return _itemData; }
-
 	class UUIManager* GetUIManager() const { return _uiManager; }
 	class UResourceManager* GetResourceManager() const { return _resourceManager; }
 
 private:
-	UPROPERTY()
-	UItemData* _itemData;
-
 	UPROPERTY()
 	UUIManager* _uiManager;
 

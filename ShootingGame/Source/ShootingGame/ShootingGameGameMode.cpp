@@ -25,8 +25,6 @@ void AShootingGameGameMode::InitGame(const FString& MapName, const FString& Opti
 	Super::InitGame(MapName, Options, ErrorMessage);
 	GetDataManager()->Init();
 
-	_itemData = NewObject<UItemData>(this);
-
 	_uiManager = NewObject<UUIManager>(this);
 	_uiManager->Init(GetWorld());
 
