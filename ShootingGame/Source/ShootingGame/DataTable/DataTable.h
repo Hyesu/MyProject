@@ -11,6 +11,8 @@ struct Data
 {
 	DataKey key{ 0 };
 	FName stringKey;
+
+	virtual ~Data() {};
 };
 using DataPtr = std::unique_ptr<Data>;
 using DataPair = std::pair<DataKey, DataPtr>;

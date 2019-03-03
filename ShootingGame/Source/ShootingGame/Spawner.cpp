@@ -62,16 +62,37 @@ void ASpawner::PreSpawn()
 
 void ASpawner::PostSpawn()
 {
+	// weapon with ammo
+	for (auto& it : _spawnedItems) {
+		const ItemData* itemData{ GetItemTable()->GetData(it.Key) };
+		if (itemData->GetType() != ItemType::Weapon) {
+			continue;
+		}
 
+		const WeaponData* weaponData{ static_cast<const WeaponData*>(itemData) };
+		const ItemData* ammoData{ GetItemTable()->GetData(weaponData->ammo) };
+		if (ammoData == nullptr) {
+			continue;
+		}
+
+		auto newFdObject = GetWorld()->SpawnActor<AFieldObject>(GetSpawnLocation(), FRotator::ZeroRotator);
+		if (newFdObject == nullptr) {
+			SG_ERROR("Ammo Spawn fail: key[%s], ammo[%s]", *_spawnDataKey.ToString(), *ammoData->stringKey.ToString());
+			return;
+		}
+
+		SG_LOG("Spawn Ammo: [%s]", *ammoData->stringKey.ToString());
+
+		UStaticMesh* mesh = RESOURCE_MGR->GetMesh(*ammoData->meshPath);
+		if (mesh != nullptr) {
+			newFdObject->ModelComponent->SetStaticMesh(mesh);
+		}
+	}
 }
 
 void ASpawner::Spawn()
 {
-	FVector targetLocation{ GetActorLocation() };
-	targetLocation.X += FMath::RandRange(-_spawnRange, _spawnRange);
-	targetLocation.Y += FMath::RandRange(-_spawnRange, _spawnRange);
-
-	auto newFdObject = GetWorld()->SpawnActor<AFieldObject>(targetLocation, FRotator::ZeroRotator);
+	auto newFdObject = GetWorld()->SpawnActor<AFieldObject>(GetSpawnLocation(), FRotator::ZeroRotator);
 	if (newFdObject == nullptr) {
 		SG_ERROR("Spawn fail: key[%s]", *_spawnDataKey.ToString());
 		return;
@@ -95,7 +116,7 @@ void ASpawner::Spawn()
 		return;
 	}
 
-	SG_LOG("Spawn: [%s]", *it->first.ToString());
+	SG_LOG("Spawn Item: [%s]", *it->first.ToString());
 
 	const ItemData* itemData{ GetItemTable()->GetData(it->first) };
 	if (itemData == nullptr) {
@@ -103,8 +124,17 @@ void ASpawner::Spawn()
 		return;
 	}
 
+	_spawnedItems.Emplace(itemData->key, newFdObject);
 	UStaticMesh* mesh = RESOURCE_MGR->GetMesh(*itemData->meshPath);
 	if (mesh != nullptr) {
 		newFdObject->ModelComponent->SetStaticMesh(mesh);
 	}
+}
+
+FVector ASpawner::GetSpawnLocation() const
+{
+	FVector targetLocation{ GetActorLocation() };
+	targetLocation.X += FMath::RandRange(-_spawnRange, _spawnRange);
+	targetLocation.Y += FMath::RandRange(-_spawnRange, _spawnRange);
+	return targetLocation;
 }

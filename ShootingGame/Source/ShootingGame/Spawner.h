@@ -34,6 +34,7 @@ public:
 
 private:
 	void Init();
+	FVector GetSpawnLocation() const;
 
 	FTimerHandle _spawnTimerHandle = {};
 
@@ -57,4 +58,6 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Spawn, Meta = (AllowPrivateAccess = true))
 	int32 _maxCount{ 1 };
+
+	TMap<uint32, class AFieldObject*> _spawnedItems;
 };
