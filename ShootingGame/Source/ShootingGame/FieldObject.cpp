@@ -2,6 +2,9 @@
 
 #include "FieldObject.h"
 #include "ShootingGame.h"
+#include "ShootingGameGameMode.h"
+#include "Components/StaticMeshComponent.h"
+#include "Manager/ResourceManager.h"
 
 // Sets default values
 AFieldObject::AFieldObject()
@@ -35,11 +38,13 @@ void AFieldObject::Tick(float DeltaTime)
 void AFieldObject::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-
-	InitModel();
 }
 
-void AFieldObject::InitModel()
+void AFieldObject::SetModelData(const FString& meshPath, const FVector& scale)
 {
-	// todo: data driven	
+	UStaticMesh* mesh = RESOURCE_MGR->GetMesh(*meshPath);
+	if (mesh != nullptr) {
+		ModelComponent->SetStaticMesh(mesh);
+	}
+	ModelComponent->SetRelativeScale3D(scale);
 }

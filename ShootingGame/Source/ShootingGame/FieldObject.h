@@ -21,12 +21,12 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	void InitModel();
-
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	virtual void PostInitializeComponents() override;
+
+	void SetModelData(const FString& meshPath, const FVector& scale);
 
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* ModelComponent;

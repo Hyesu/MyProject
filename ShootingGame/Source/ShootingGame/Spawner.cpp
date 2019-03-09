@@ -4,10 +4,8 @@
 #include "ShootingGame.h"
 #include "ShootingGameGameMode.h"
 #include "FieldObject.h"
-#include "Components/StaticMeshComponent.h"
 #include "DataTable/SpawnTable.h"
 #include "DataTable/ItemTable.h"
-#include "Manager/ResourceManager.h"
 #include <algorithm>
 
 // Sets default values
@@ -82,11 +80,7 @@ void ASpawner::PostSpawn()
 		}
 
 		SG_LOG("Spawn Ammo: [%s]", *ammoData->stringKey.ToString());
-
-		UStaticMesh* mesh = RESOURCE_MGR->GetMesh(*ammoData->meshPath);
-		if (mesh != nullptr) {
-			newFdObject->ModelComponent->SetStaticMesh(mesh);
-		}
+		newFdObject->SetModelData(ammoData->meshPath, ammoData->scale);
 	}
 }
 
@@ -125,10 +119,7 @@ void ASpawner::Spawn()
 	}
 
 	_spawnedItems.Emplace(itemData->key, newFdObject);
-	UStaticMesh* mesh = RESOURCE_MGR->GetMesh(*itemData->meshPath);
-	if (mesh != nullptr) {
-		newFdObject->ModelComponent->SetStaticMesh(mesh);
-	}
+	newFdObject->SetModelData(itemData->meshPath, itemData->scale);
 }
 
 FVector ASpawner::GetSpawnLocation() const
