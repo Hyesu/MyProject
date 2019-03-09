@@ -8,21 +8,28 @@
 
 #include "FieldObject.generated.h"
 
-UCLASS()
+UENUM()
+enum class EFieldObjectType : uint8
+{
+	Invalid,
+	Item
+};
+
+UCLASS(BlueprintType)
 class SHOOTINGGAME_API AFieldObject : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
-	// Sets default values for this actor's properties
+public:
 	AFieldObject();
+	virtual ~AFieldObject() {}
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
+	virtual EFieldObjectType GetType() const { return EFieldObjectType::Invalid; }
+
 	virtual void Tick(float DeltaTime) override;
 	virtual void PostInitializeComponents() override;
 
@@ -30,4 +37,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* ModelComponent;
+
+	UPROPERTY(BlueprintReadOnly)
+	FName DataStringKey;
 };

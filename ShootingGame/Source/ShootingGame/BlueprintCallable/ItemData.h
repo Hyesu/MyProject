@@ -16,11 +16,11 @@ class SHOOTINGGAME_API UItemData : public UObject
 	
 public:
 	UFUNCTION(BlueprintPure, Category="Data|Item")
-	static FString GetItem_Name(const FString& stringKey);
+	static FString GetItem_Name(const FName& stringKey);
 
 	UFUNCTION(BlueprintPure, Category = "Data|Item")
-	static FString GetItem_Type(const FString& stringKey);
+	static FString GetItem_Type(const FName& stringKey);
 
 	UFUNCTION(BlueprintPure, Category = "Data|Item")
-	static FString GetItem_SubType(const FString& stringKey);
+	static FString GetItem_SubType(const FName& stringKey);
 };

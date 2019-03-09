@@ -3,9 +3,10 @@
 #include "Spawner.h"
 #include "ShootingGame.h"
 #include "ShootingGameGameMode.h"
-#include "FieldObject.h"
+#include "FieldObject/FieldItem.h"
 #include "DataTable/SpawnTable.h"
 #include "DataTable/ItemTable.h"
+#include "Manager/WorldManager.h"
 #include <algorithm>
 
 // Sets default values
@@ -73,11 +74,13 @@ void ASpawner::PostSpawn()
 			continue;
 		}
 
-		auto newFdObject = GetWorld()->SpawnActor<AFieldObject>(GetSpawnLocation(), FRotator::ZeroRotator);
+		auto newFdObject = GetWorld()->SpawnActor<AFieldItem>(GetSpawnLocation(), FRotator::ZeroRotator);
 		if (newFdObject == nullptr) {
 			SG_ERROR("Ammo Spawn fail: key[%s], ammo[%s]", *_spawnDataKey.ToString(), *ammoData->stringKey.ToString());
 			return;
 		}
+		newFdObject->DataStringKey = ammoData->stringKey;
+		WORLD_MGR->AddFieldObject(newFdObject);
 
 		SG_LOG("Spawn Ammo: [%s]", *ammoData->stringKey.ToString());
 		newFdObject->SetModelData(ammoData->meshPath, ammoData->scale);
@@ -86,11 +89,12 @@ void ASpawner::PostSpawn()
 
 void ASpawner::Spawn()
 {
-	auto newFdObject = GetWorld()->SpawnActor<AFieldObject>(GetSpawnLocation(), FRotator::ZeroRotator);
+	auto newFdObject = GetWorld()->SpawnActor<AFieldItem>(GetSpawnLocation(), FRotator::ZeroRotator);
 	if (newFdObject == nullptr) {
 		SG_ERROR("Spawn fail: key[%s]", *_spawnDataKey.ToString());
 		return;
-	}
+	}	
+	WORLD_MGR->AddFieldObject(newFdObject);
 
 	const SpawnData* spawnData{ GetSpawnTable()->GetData(_spawnDataKey) };
 	if (spawnData == nullptr) {
@@ -119,6 +123,7 @@ void ASpawner::Spawn()
 	}
 
 	_spawnedItems.Emplace(itemData->key, newFdObject);
+	newFdObject->DataStringKey = itemData->stringKey;
 	newFdObject->SetModelData(itemData->meshPath, itemData->scale);
 }
 

@@ -19,6 +19,8 @@ public:
 
 	class UUIManager* GetUIManager() const { return _uiManager; }
 	class UResourceManager* GetResourceManager() const { return _resourceManager; }
+	class UWorldManager* GetWorldManager() const { return _worldManager; }
+	class AShootingGameCharacter* GetMyCharacter();
 
 private:
 	UPROPERTY()
@@ -26,7 +28,12 @@ private:
 
 	UPROPERTY()
 	UResourceManager* _resourceManager;
+
+	UPROPERTY()
+	UWorldManager* _worldManager;
 };
 
 #define UI_MGR			((AShootingGameGameMode*)GetWorld()->GetAuthGameMode())->GetUIManager()
 #define RESOURCE_MGR	((AShootingGameGameMode*)GetWorld()->GetAuthGameMode())->GetResourceManager()
+#define WORLD_MGR		((AShootingGameGameMode*)GetWorld()->GetAuthGameMode())->GetWorldManager()
+#define MY_CHARACTER	((AShootingGameGameMode*)GetWorld()->GetAuthGameMode())->GetMyCharacter()

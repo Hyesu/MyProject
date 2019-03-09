@@ -12,6 +12,7 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Manager/UIManager.h"
+#include "Manager/WorldManager.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AShootingGameCharacter
@@ -145,6 +146,16 @@ void AShootingGameCharacter::PostInitializeComponents()
 
 void AShootingGameCharacter::ToggleInventory()
 {
-	SG_LOG("Toggle inventory");
 	UI_MGR->ToggleUI(TEXT("Inventory"));
+}
+
+void AShootingGameCharacter::UpdateAroundItems()
+{
+	AroundItems.Empty();
+	
+	constexpr float searchDistanceSquared = 200.f * 200.f; // todo: set data from character data
+	const FVector& curLocation = GetActorLocation();	
+	WORLD_MGR->SelectFieldObjects(EFieldObjectType::Item, AroundItems, UWorldManager::FFdObjectSelector::CreateLambda([&curLocation, searchDistanceSquared](AFieldObject* item) {
+		return FVector::DistSquared(curLocation, item->GetActorLocation()) < searchDistanceSquared;
+	}));
 }
