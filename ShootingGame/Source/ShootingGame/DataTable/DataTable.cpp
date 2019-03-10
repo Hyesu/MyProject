@@ -1,6 +1,9 @@
 #include "DataTable.h"
 #include "ItemTable.h"
 #include "SpawnTable.h"
+#include "Paths.h"
+#include "ShootingGame.h"
+#include "Utility/JsonUtil.h"
 #include <algorithm>
 
 IMPL_SINGLETONE(DataManager);
@@ -68,4 +71,27 @@ void DataManager::DoInit()
 	std::for_each(_tables.begin(), _tables.end(), [](DataTable* table) {
 		table->PostInit();
 	});
+
+	InitCharacterData();
+}
+
+void DataManager::InitCharacterData()
+{
+	static FString dataTableFilePath{ FPaths::ProjectContentDir().Append(TEXT("Data/character.json")) };
+	auto jsonFile = std::make_unique<JsonUtil>();
+	if (jsonFile->Init(dataTableFilePath) != JsonUtil::Result::Success) {
+		SG_ERROR("Json File Init Fail: %s", *dataTableFilePath);
+		return;
+	}
+
+	const JsonObjectPtr& charObject = jsonFile->GetRootObject()->GetObjectField("CharacterInfo");
+	_charData = std::make_unique<CharacterData>();
+	_charData->defaultCapacity = charObject->GetNumberField("DefaultCapacity");
+	_charData->maxBoost = charObject->GetNumberField("BoostMax");
+	_charData->maxHP = charObject->GetNumberField("HpMax");
+	_charData->speedCrouch = charObject->GetNumberField("SpeedCrouch");
+	_charData->speedFast = charObject->GetNumberField("SpeedFast");
+	_charData->speedNormal = charObject->GetNumberField("SpeedNormal");
+	_charData->speedSlow = charObject->GetNumberField("SpeedSlow");
+	_charData->searchDistanceRadius = charObject->GetNumberField("ItemSearchDistance");
 }

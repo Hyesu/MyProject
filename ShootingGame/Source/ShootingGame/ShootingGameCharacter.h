@@ -43,6 +43,7 @@ public:
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
 public:
+	virtual void BeginPlay() override;
 	virtual void PostInitializeComponents() override;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Game|Item")
@@ -53,4 +54,6 @@ public:
 
 private:
 	void ToggleInventory();
+
+	double _searchDistanceSquared{ 0.0 };
 };

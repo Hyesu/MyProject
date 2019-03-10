@@ -38,6 +38,18 @@ protected:
 	TMap<FName, DataKey> _keyIndexMap;
 };
 
+struct CharacterData
+{
+	float defaultCapacity{ 0.f };
+	float maxHP{ 0.f };
+	float maxBoost{ 0.f };
+	float speedNormal{ 0.f };
+	float speedFast{ 0.f };
+	float speedSlow{ 0.f };
+	float speedCrouch{ 0.f };
+	float searchDistanceRadius{ 0.f };
+};
+
 class DataManager
 {
 	DECL_SINGLETONE(DataManager);
@@ -46,10 +58,14 @@ public:
 	void Init();
 	void Finalize();
 
+	const CharacterData* GetCharacterData() const { return _charData.get(); }
+
 private:
-	void DoInit();
+	void DoInit();	
+	void InitCharacterData();
 
 	std::list<DataTable*> _tables;
+	std::unique_ptr<CharacterData> _charData;
 };
 
 DataManager* GetDataManager();
