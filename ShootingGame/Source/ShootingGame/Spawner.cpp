@@ -7,6 +7,7 @@
 #include "DataTable/SpawnTable.h"
 #include "DataTable/ItemTable.h"
 #include "Manager/WorldManager.h"
+#include "Utility/GameUtil.h"
 #include <algorithm>
 
 // Sets default values
@@ -61,29 +62,40 @@ void ASpawner::PreSpawn()
 
 void ASpawner::PostSpawn()
 {
-	// weapon with ammo
 	for (auto& it : _spawnedItems) {
 		const ItemData* itemData{ GetItemTable()->GetData(it.Key) };
-		if (itemData->GetType() != ItemType::Weapon) {
+		const BonusSpawnData* bonusSpawnData{ GetSpawnTable()->GetBonusData(itemData->type) };
+		if (bonusSpawnData == nullptr) {
 			continue;
 		}
 
-		const WeaponData* weaponData{ static_cast<const WeaponData*>(itemData) };
-		const ItemData* ammoData{ GetItemTable()->GetData(weaponData->ammo) };
-		if (ammoData == nullptr) {
+		const FName* bonusItemKey{ ItemData::GetNameField(itemData, bonusSpawnData->hint) };
+		if (bonusItemKey == nullptr) {
+			continue;
+		}
+		
+		const ItemData* bonusItemData{ GetItemTable()->GetData(*bonusItemKey) };
+		if (bonusItemData == nullptr) {
 			continue;
 		}
 
-		auto newFdObject = GetWorld()->SpawnActor<AFieldItem>(GetSpawnLocation(), FRotator::ZeroRotator);
-		if (newFdObject == nullptr) {
-			SG_ERROR("Ammo Spawn fail: key[%s], ammo[%s]", *_spawnDataKey.ToString(), *ammoData->stringKey.ToString());
-			return;
+		uint32 bonusSpawnCount = 0;
+		if (GameUtil::GetRandomResult(bonusSpawnData->bonusCountList, bonusSpawnData->totalRatio, bonusSpawnCount) == false) {
+			continue;
 		}
-		newFdObject->DataStringKey = ammoData->stringKey;
-		WORLD_MGR->AddFieldObject(newFdObject);
 
-		SG_LOG("Spawn Ammo: [%s]", *ammoData->stringKey.ToString());
-		newFdObject->SetModelData(ammoData->meshPath, ammoData->scale);
+		for (uint32 i = 0; i < bonusSpawnCount; ++i) {
+			auto newFdObject = GetWorld()->SpawnActor<AFieldItem>(GetSpawnLocation(), FRotator::ZeroRotator);
+			if (newFdObject == nullptr) {
+				SG_ERROR("Ammo Spawn fail: key[%s], ammo[%s]", *_spawnDataKey.ToString(), *bonusItemData->stringKey.ToString());
+				return;
+			}
+			newFdObject->DataStringKey = bonusItemData->stringKey;
+			WORLD_MGR->AddFieldObject(newFdObject);
+
+			SG_LOG("Spawn Ammo: [%s]", *bonusItemData->stringKey.ToString());
+			newFdObject->SetModelData(bonusItemData->meshPath, bonusItemData->scale);
+		}
 	}
 }
 
@@ -102,23 +114,15 @@ void ASpawner::Spawn()
 		return;
 	}
 
-	int32 weight{ FMath::RandRange(0, spawnData->totalWeight) };
-	int32 accWeight{ 0 };
-	auto it = std::find_if(spawnData->itemSpawnWeightList.cbegin(), spawnData->itemSpawnWeightList.cend(), [&accWeight, weight](const SpawnWeightPairType& spawnWeightPair) {
-		accWeight += spawnWeightPair.second;
-		return weight <= accWeight;
-	});
-
-	if (it == spawnData->itemSpawnWeightList.cend()) {
-		SG_ERROR("Spawn Logic Error: RandomValue[%d], AccValue[%d], SpawnKey[%s]", weight, accWeight, *_spawnDataKey.ToString());
+	FName resultItemStringKey;
+	if (GameUtil::GetRandomResult(spawnData->itemSpawnWeightList, spawnData->totalWeight, resultItemStringKey) == false) {
+		SG_ERROR("Spawn Item is null: spawner[%s]", *_spawnDataKey.ToString());
 		return;
 	}
 
-	SG_LOG("Spawn Item: [%s]", *it->first.ToString());
-
-	const ItemData* itemData{ GetItemTable()->GetData(it->first) };
+	const ItemData* itemData{ GetItemTable()->GetData(resultItemStringKey) };
 	if (itemData == nullptr) {
-		SG_ERROR("Spawn Item is null: spawner[%s], item[%s]", *_spawnDataKey.ToString(), *it->first.ToString());
+		SG_ERROR("Spawn Item is null: spawner[%s], item[%s]", *_spawnDataKey.ToString(), *resultItemStringKey.ToString());
 		return;
 	}
 

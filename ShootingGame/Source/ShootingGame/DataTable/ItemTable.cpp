@@ -2,6 +2,7 @@
 #include "Paths.h"
 #include "ShootingGame.h"
 #include "../Utility/JsonUtil.h"
+#include <map>
 
 IMPL_SINGLETONE(ItemTable);
 
@@ -102,4 +103,18 @@ void ItemTable::InitWeapons()
 		_dataMap.emplace(key, std::move(weaponData));
 		return true;
 	});
+}
+
+const FName* ItemData::GetNameField(const ItemData* itemData, const FName& fieldName)
+{
+	static std::map<FName, std::function<const FName*(const ItemData*)>> s_fieldIndexMap = {
+		{ FName(TEXT("Ammo")), [](const ItemData* itemData) {
+			check(itemData->GetType() == ItemType::Weapon);
+			return &static_cast<const WeaponData*>(itemData)->ammo;
+		}}
+	};
+
+	auto it = s_fieldIndexMap.find(fieldName);
+	check(it != s_fieldIndexMap.end());
+	return it->second(itemData);
 }

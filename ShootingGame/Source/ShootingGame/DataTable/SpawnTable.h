@@ -2,7 +2,7 @@
 #include "DataTable.h"
 #include <map>
 
-using SpawnWeightType = unsigned int;
+using SpawnWeightType = uint32;
 using SpawnWeightPairType = std::pair<FName, SpawnWeightType>; // <itemStrID, spawnWeight>
 struct SpawnData : public Data
 {
@@ -12,6 +12,13 @@ struct SpawnData : public Data
 
 	std::vector<SpawnWeightPairType> itemSpawnWeightList;
 	SpawnWeightType totalWeight{ 0 };
+};
+
+struct BonusSpawnData
+{
+	FName hint;
+	uint32 totalRatio{ 0 };
+	std::vector<std::pair<uint32, uint32>> bonusCountList;
 };
 
 class SpawnTable : public DataTable
@@ -25,11 +32,16 @@ public:
 
 	const SpawnData* GetData(const DataKey& key) override;
 	const SpawnData* GetData(const FName& key) override;
+	const BonusSpawnData* GetBonusData(const FName& type);
 
 private:
-	using SubTypeWeightMap = std::map<FName, SpawnWeightType>; // <subType, spawnWeight>
-	std::map < FName, std::pair<SpawnWeightType, SubTypeWeightMap>> _weightByType;
+	void InitSpawnWeight();
+	void InitSpawnRule();
 
+	using SubTypeWeightMap = std::map<FName, SpawnWeightType>; // <subType, spawnWeight>
+	std::map<FName, std::pair<SpawnWeightType, SubTypeWeightMap>> _weightByType;	
+
+	std::map<FName, std::unique_ptr<BonusSpawnData>> _bonusSpawnRule;
 };
 
 SpawnTable* GetSpawnTable();

@@ -19,6 +19,8 @@ struct ItemData : public Data
 
 	virtual ~ItemData() { }
 	virtual ItemType GetType() const { return ItemType::None; }
+
+	static const FName* GetNameField(const ItemData* itemData, const FName& fieldName);
 };
 
 struct WeaponData : public ItemData
