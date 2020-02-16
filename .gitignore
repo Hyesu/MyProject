@@ -14,7 +14,5 @@ ShootingGame/Content/KiteDemo/Maps/Overview.umap
 ShootingGame/Content/Data
 *.umap
 *.ini
-눈누난나
-
-이것은 작업입니다.
-오옷
+*/DataExporter/bin/*
+*/DataExporter/obj/*
